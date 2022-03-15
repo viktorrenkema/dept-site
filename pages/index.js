@@ -1,15 +1,30 @@
+// 📦 Packages
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import React from "react";
+
+// 🌱 Components
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Clients from "../components/clients";
 import Header from "../components/header";
+import Cases from "../components/cases";
+import Menu from "../components/menu";
 
 // 🖼️ Assets
-import Clients from "../components/clients";
 
-import cases from "../components/cases";
-import Cases from "../components/cases";
+// 🧰 Utils
+import { palette } from "../resources/palette";
+import styles from "../styles/Home.module.css";
+
+// 🌀 Variants
+
+// 💅🏽 Styled Components
 
 export default function Home() {
+  // Allows for toggling the menu
+  const [showMenu, setShowMenu] = React.useState(false);
+
+  console.log(showMenu);
   return (
     <div className="container">
       <Head>
@@ -19,7 +34,8 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <Header></Header>
+        <Header showMenu={showMenu} setShowMenu={setShowMenu}></Header>
+        <Menu showMenu={showMenu} setShowMenu={setShowMenu}></Menu>
         <Cases></Cases>
         <Clients />
       </main>

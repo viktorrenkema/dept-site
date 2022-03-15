@@ -1,13 +1,21 @@
+// 📦 Packages
+import { motion } from "framer-motion";
+import styled from "styled-components";
+
 // 🖼️ Assets
 import headerImg from "../resources/images/header.jpg";
+
+// 🌱 Components
+import MenuBar from "./menubar";
 import Image from "next/image";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import Menu from "../components/menu";
+import Button from "../components/button";
+
+// 🧰 Utils
 
 const HeaderCont = styled(motion.div)`
   width: 100%;
   position: relative;
+  z-index: 1;
 `;
 
 const H1 = styled(motion.h1)`
@@ -33,10 +41,11 @@ const H1 = styled(motion.h1)`
   }
 `;
 
-export default function Header() {
+export default function Header(props) {
+  const { setShowMenu, showMenu } = props;
   return (
     <HeaderCont>
-      <Menu></Menu>
+      <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar>
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
@@ -44,6 +53,7 @@ export default function Header() {
         // height="100%"
       ></Image>
       <H1>WORK</H1>
+      <Button btntext="view case" to="https://www.deptagency.com/"></Button>
     </HeaderCont>
   );
 }

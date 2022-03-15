@@ -31,7 +31,7 @@ const CasesCont = styled(motion.div)`
   width: 90%;
   display: flex;
   flex-direction: row;
-  margin: 0rem 120px;
+  margin: 0rem 5%;
   gap: 30px;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -45,16 +45,16 @@ const FilterPanelWrapper = styled(motion.div)`
   margin: 60px 0rem;
   display: flex;
   justify-content: end;
-  width: 100%; // todo
-  height: 32px; // todo
+  width: 100%; /* todo */
+  height: 32px; /* todo */
 `;
 
 const FiltersContainer = styled(motion.div)`
   display: flex;
   justify-content: end;
   border: 1px solid ${palette.accent};
-  width: 372px; // todo
-  height: 32px; // todo
+  width: 372px; /* todo */
+  height: 32px; /* todo */
 `;
 
 export default function Cases(props) {

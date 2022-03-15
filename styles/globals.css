@@ -40,10 +40,6 @@ h1 h2 h3 a {
   padding: 0;
 }
 
-.container {
-  /* padding: 0 2rem; */
-}
-
 .main {
   min-height: 100vh;
   padding: 1rem 1rem;
@@ -52,6 +48,15 @@ h1 h2 h3 a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 576px) {
+    /* Phone devices and **below** */
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .main {
+    padding: 0rem;
+  }
 }
 
 .footer {

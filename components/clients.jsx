@@ -3,9 +3,8 @@ import headerImg from "../resources/images/header.jpg";
 import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Menu from "./menu";
 
-import { clients } from "../resources/clientlist";
+import clients from "../resources/clientlist.json";
 import { palette } from "../resources/palette";
 
 const ClientsWrapper = styled(motion.div)`
@@ -19,10 +18,15 @@ const ClientsWrapper = styled(motion.div)`
 `;
 
 const GridContainer = styled(motion.div)`
-  width: 1000px;
+  /* width: 1000px; */
   display: grid;
-  grid-template-columns: repeat(4, 250px);
-  grid-template-rows: repeat(4, 250px);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  @media (max-width: 576px) {
+    /* Phone devices and **below** */
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(3, 86px);
+  }
 `;
 
 const H1 = styled(motion.h1)`
@@ -37,13 +41,19 @@ const H1 = styled(motion.h1)`
 `;
 
 const Client = styled(motion.div)`
-  width: 250px;
-  height: 126px;
+  width: 1fr;
+  max-width: 250px;
+  /* height: 126px; */
   background: ${palette.lightgrey};
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem;
+  padding: 1rem;
+  @media (max-width: 576px) {
+    /* Phone devices and **below** */
+    width: 170px;
+    height: 86px;
+  }
 `;
 
 const H2 = styled(motion.h2)`
@@ -57,6 +67,7 @@ const H2 = styled(motion.h2)`
 
 const Paragraph = styled(motion.p)`
   font-size: 17px;
+  width: 90%;
   max-width: 560px;
   line-height: 27px;
   font-family: "Arial";
@@ -66,9 +77,14 @@ const Paragraph = styled(motion.p)`
 `;
 
 const ClientLogo = styled(motion.img)`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 50%;
+  max-height: 50%;
+  @media (max-width: 576px) {
+    /* Phone devices and **below** */
+    display: ${(props) => (props.priority ? "inline" : "none")};
+  }
 `;
+
 export default function Clients() {
   return (
     <ClientsWrapper>
@@ -86,6 +102,8 @@ export default function Clients() {
               <ClientLogo
                 src={clt.logo}
                 alt={`The company logo of ${clt.name}`}
+                // A priority prop is passed to determine which logo's to still show on smaller breakpoints
+                priority={clt.priority}
               ></ClientLogo>
             </Client>
           );

@@ -20,6 +20,10 @@ const CaseLinkContainer = styled(motion.a)`
   padding-top: 16px;
   align-items: center;
   justify-content: flex-start;
+  @media (max-width: 576px) {
+    /* Phone devices and **below** */
+    display: none;
+  }
 `;
 
 const Text = styled(motion.span)`

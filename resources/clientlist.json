@@ -1,68 +1,82 @@
-{
-  "clients": [
-    {
-      "name": "Nivea",
-      "logo": "/logos/nivea.png"
-    },
-    {
-      "name": "Mona",
-      "logo": "/logos/mona.png"
-    },
-    {
-      "name": "Transavia",
-      "logo": "/logos/transavia.png"
-    },
-    {
-      "name": "Zalando",
-      "logo": "/logos/zalando.png"
-    },
-    {
-      "name": "TomTom",
-      "logo": "/logos/tomtom.png"
-    },
-    {
-      "name": "Unilever",
-      "logo": "/logos/unilever.png"
-    },
-    {
-      "name": "Adidas",
-      "logo": "/logos/adidas.png"
-    },
-    {
-      "name": "Pathé",
-      "logo": "/logos/pathe.png"
-    },
-    {
-      "name": "ABN",
-      "logo": "/logos/abn.png"
-    },
-    {
-      "name": "Triumph",
-      "logo": "/logos/triumph.png"
-    },
-    {
-      "name": "Microsoft",
-      "logo": "/logos/microsoft.png"
-    },
-    {
-      "name": "Oxxio",
-      "logo": "/logos/oxxio.png"
-    },
-    {
-      "name": "Nationale Nederlanden",
-      "logo": "/logos/nn.png"
-    },
-    {
-      "name": "Ziggo",
-      "logo": "/logos/ziggo.png"
-    },
-    {
-      "name": "Walibi Holland",
-      "logo": "/logos/walibi.png"
-    },
-    {
-      "name": "KLM",
-      "logo": "/logos/klm.png"
-    }
-  ]
-}
+[
+  {
+    "name": "Nivea",
+    "logo": "/logos/nivea.png",
+    "priority": true
+  },
+  {
+    "name": "Mona",
+    "logo": "/logos/mona.png",
+    "priority": true
+  },
+  {
+    "name": "Transavia",
+    "logo": "/logos/transavia.png",
+    "priority": true
+  },
+  {
+    "name": "Zalando",
+    "logo": "/logos/zalando.png",
+    "priority": true
+  },
+  {
+    "name": "TomTom",
+    "logo": "/logos/tomtom.png",
+    "priority": true
+  },
+  {
+    "name": "Unilever",
+    "logo": "/logos/unilever.png",
+    "priority": true
+  },
+  {
+    "name": "Adidas",
+    "logo": "/logos/adidas.png",
+    "priority": false
+  },
+  {
+    "name": "Pathé",
+    "logo": "/logos/pathe.png",
+    "priority": false
+  },
+  {
+    "name": "ABN",
+    "logo": "/logos/abn.png",
+    "priority": false
+  },
+  {
+    "name": "Triumph",
+    "logo": "/logos/triumph.png",
+    "priority": false
+  },
+  {
+    "name": "Microsoft",
+    "logo": "/logos/microsoft.png",
+    "priority": false
+  },
+  {
+    "name": "Oxxio",
+    "logo": "/logos/oxxio.png",
+    "priority": false
+  },
+  {
+    "name": "Nationale Nederlanden",
+    "logo": "/logos/nn.png",
+    "priority": false
+  },
+  {
+    "name": "Ziggo",
+    "logo": "/logos/ziggo.png",
+    "priority": false
+  },
+  {
+    "name": "Walibi Holland",
+    "logo": "/logos/walibi.png",
+    "priority": false
+  },
+  {
+    "name": "KLM",
+    "logo": "/logos/klm.png",
+    "priority": false
+  }
+]

@@ -1,72 +1,193 @@
-// 🖼️ Assets
-import headerImg from "../resources/images/header.jpg";
-import Image from "next/image";
-import styled from "styled-components";
+// 📦 Packages
 import { motion } from "framer-motion";
+import styled from "styled-components";
+import React from "react";
+
+// 🌱 Components
+import MenuBar from "./menubar";
+
+// 🖼️ Assets
+
+// 🧰 Utils
 import { palette } from "../resources/palette";
 
-const MenuCont = styled(motion.div)`
-  height: 53px;
-  margin: 0rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1;
-  border-bottom: 1px solid ${palette.black};
+// 🌀 Variants for animation
+const overlayVariants = {
+  closed: {
+    width: "0%",
+    height: "100vh",
+  },
+  open: {
+    width: "100vw",
+    height: "100vh",
+  },
+};
+
+// 💅🏽 Styled Components
+const MenuOverlay = styled(motion.div)`
+  background: ${palette.black};
+  z-index: 3;
   position: fixed;
-  top: 4rem;
-  left: 0;
-  right: 0;
-  /* -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.2); */
+  top: 0rem;
+  right: 0rem;
 `;
-const MenuButtonCont = styled(motion.div)`
+
+const MenuFlex = styled(motion.ol)`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  padding: 100px 5%;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: start;
 `;
 
-const MenuSpan = styled(motion.div)`
+const MenuItem = styled(motion.li)`
+  text-decoration: none;
   font-family: "Teko Regular";
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 50px;
+  line-height: 1;
   text-transform: uppercase;
+  color: ${palette.white};
+  border-bottom: 1px solid ${palette.mediumgrey50};
+  width: 100%;
+  padding-top: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+  @media (min-width: 1200px) {
+    /* Large devices and **higher** */
+    font-size: 110px;
+  }
 `;
 
-export default function Menu() {
-  return (
-    <MenuCont>
-      <DeptSVG></DeptSVG>
-      <MenuButtonCont>
-        <MenuSpan>Menu</MenuSpan>
-        <MenuSVG></MenuSVG>
-      </MenuButtonCont>
-    </MenuCont>
-  );
-}
+const container = {
+  hidden: {
+    opacity: 0,
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.07 },
+  },
+};
 
-function DeptSVG() {
+const item = {
+  hidden: {
+    x: 100,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  show: {
+    x: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
+
+export default function Menu(props) {
+  const { showMenu, setShowMenu } = props;
+  const [navSelection, setNavSelection] = React.useState(0);
+
+  console.log(navSelection);
+
+  // Only do something when the component mounts
+  React.useEffect(() => {
+    console.log(navigationItems.length);
+    let current = navSelection;
+    // Assign the listener to a variable
+    const listener = (event) => {
+      // Prevent the window from scrolling from pressing arrow keys
+      event.preventDefault();
+
+      // Arrow Right OR Arrow Down
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        if (current === navigationItems.length - 1) {
+          current = 0;
+          setNavSelection(current);
+        } else {
+          current++;
+          setNavSelection(current);
+        }
+      }
+
+      // Arrow Left OR Arrow Up
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        if (current === 0) {
+          current = navigationItems.length - 1;
+          setNavSelection(current);
+        } else {
+          current--;
+          setNavSelection(current);
+        }
+      }
+    };
+
+    // Add the event listener
+    document.addEventListener("keydown", listener);
+
+    return () => {
+      // Remove the event listener when the component is unmounted
+      document.removeEventListener("keydown", listener);
+    };
+  }, []);
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 173 46"
-      width="100"
-      height="28"
-      style={{ zIndex: "1" }}
+    <MenuOverlay
+      variants={overlayVariants}
+      animate={showMenu ? "open" : "closed"}
+      initial={"closed"}
+      transition={{ duration: 0.3, ease: "easeIn" }}
     >
-      <path d="M147.9 46h12.6V10.8H173V0h-37.6v10.8h12.5V46zm-41.5-24.9V9.9h7.2c4.6 0 6.9 1.9 6.9 5.6 0 3.7-2.3 5.6-6.9 5.6h-7.2zM93.9 46h12.6V31h7.5c11.3 0 18.8-4.9 18.8-15.5S125.2 0 114 0H93.9v46zm-43.3 0h34.3V35.7H63.2v-7.8h21.5V18H63.2v-7.7h21.7V0H50.6v46zm-38-10.7V10.7h4c8.8 0 14.3 3.2 14.3 12.3 0 9.1-5.4 12.3-14.3 12.3h-4zM0 46h16.5c15.6 0 26.9-6.2 26.9-23C43.3 6.2 32 0 16.5 0H0v46z"></path>
+      <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar>
+      <MenuFlex
+        variants={container}
+        initial="hidden"
+        animate={showMenu ? "show" : "hidden"}
+      >
+        {/* Render a list of navigation links in the menu */}
+        {navigationItems.map((i, index) => (
+          <MenuItem key={index} variants={item}>
+            {navSelection === index && <ArrowSelection></ArrowSelection>}
+            {i}
+          </MenuItem>
+        ))}
+      </MenuFlex>
+    </MenuOverlay>
+  );
+}
+
+let navigationItems = [
+  "Home",
+  "Werk",
+  "Over",
+  "Diensten",
+  "Partners",
+  "Stories",
+  "Vacatures",
+];
+
+function ArrowSelection() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18">
+      <path d="M 0 18 L 14 8.99 L 0 0 Z" fill="#ffffff"></path>
     </svg>
   );
 }
 
-function MenuSVG() {
-  return (
-    <svg width="20" height="9" xmlns="http://www.w3.org/2000/svg">
-      <g fillRule="evenodd">
-        <path d="M0 7h20v2H0zM0 0h20v2H0z" />
-      </g>
-    </svg>
-  );
-}
+// Listen to keyboard events to navigate through the menu
+// React.useEffect(() => {
+//   document.addEventListener("keydown", listener);
+
+//   function listener(e) {
+//     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+//       setNavSelection(navSelection++);
+//     }
+//     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+//       setNavSelection(navSelection--);
+//     }
+//     return document.removeEventListener("keydown", listener);
+//   }
+
+// }, []);
