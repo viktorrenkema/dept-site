@@ -34,7 +34,7 @@ const MenuButtonCont = styled(motion.div)`
   gap: 1rem;
 `;
 
-const MenuSpan = styled(motion.div)`
+export const H4 = styled(motion.span)`
   font-family: "Teko Regular";
   font-size: 18px;
   line-height: 32px;
@@ -43,7 +43,7 @@ const MenuSpan = styled(motion.div)`
   padding-top: 3px;
 `;
 
-const DeptSVG = styled(motion.svg)`
+export const DeptSVG = styled(motion.svg)`
   width: 100px;
   height: 28px;
   z-index: 1;
@@ -69,7 +69,7 @@ export default function MenuBar(props) {
           setShowMenu(!showMenu);
         }}
       >
-        <MenuSpan>Menu</MenuSpan>
+        <H4>Menu</H4>
         {/* <MenuSVG showMenu={showMenu}></MenuSVG> */}
         <MenuToggle showMenu={showMenu} />
       </MenuButtonCont>

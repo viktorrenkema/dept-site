@@ -5,4 +5,5 @@ export const palette = {
   mediumgrey50: "#A3A3A380",
   lightgrey: "#F3F6F6",
   white: "#ffffff",
+  anothergrey: "#808080",
 };

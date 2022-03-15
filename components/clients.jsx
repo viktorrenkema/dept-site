@@ -1,11 +1,18 @@
-// 🖼️ Assets
-import headerImg from "../resources/images/header.jpg";
-import Image from "next/image";
-import styled from "styled-components";
+// 📦 Packages
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
+// 🌱 Components
+
+// 🧰 Utils and data
 import clients from "../resources/clientlist.json";
 import { palette } from "../resources/palette";
+
+// 🌀 Variants
+
+// 💅🏽 Styled Components
+
+// 🖼️ Assets
 
 const ClientsWrapper = styled(motion.div)`
   width: 100%;
