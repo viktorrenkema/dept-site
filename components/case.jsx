@@ -28,7 +28,7 @@ const CaseCont = styled(motion.div)`
   }
 `;
 
-const H3 = styled(motion.h3)`
+export const H3 = styled(motion.h3)`
   font-size: 30px;
   line-height: 32px;
   font-family: "Teko Light";

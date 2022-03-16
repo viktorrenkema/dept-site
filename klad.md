@@ -1,4 +1,5 @@
 Final checklist:
+-[] Check accessibility for: images, links, select
 -[] Check all links
 -[] Check responsiveness
 -[] Remove all console logs
@@ -8,6 +9,7 @@ Final checklist:
 -[] Clean up all imports with comments/emojis
 -[] See if we can use rems everywhere
 -[] See if we can use color palette everywhere
+-[] Remove all unused imports
 
 @media (min-width: 1200px) {
 /_ Large devices and **higher** _/
@@ -39,6 +41,7 @@ import Header from "./components/header";
 
 export default function Home() {
 return (
+
 <div className={styles.container}>
 <Head>
 <title>Dept Work</title>

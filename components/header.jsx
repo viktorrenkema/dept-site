@@ -27,18 +27,6 @@ const H1 = styled(motion.h1)`
   left: 1rem;
   margin: 0;
   margin-left: 4rem;
-  @media (min-width: 1200px) {
-    /* Large devices and **higher** */
-  }
-  @media (max-width: 992px) {
-    /* Laptop devices and **below** */
-  }
-  @media (max-width: 768px) {
-    /* Laptop devices and **below** */
-  }
-  @media (max-width: 576px) {
-    /* Phone devices and **below** */
-  }
 `;
 
 export default function Header(props) {
@@ -49,8 +37,8 @@ export default function Header(props) {
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
-        // width="100%"
-        // height="100%"
+        layout="responsive"
+        objectFit="cover"
       ></Image>
       <H1>WORK</H1>
       <Button btntext="view case" to="https://www.deptagency.com/"></Button>

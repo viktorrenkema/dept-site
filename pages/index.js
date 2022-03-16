@@ -25,7 +25,6 @@ export default function Home() {
   // Allows for toggling the menu
   const [showMenu, setShowMenu] = React.useState(false);
 
-  console.log(showMenu);
   return (
     <div className="container">
       <Head>

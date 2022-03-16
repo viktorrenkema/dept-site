@@ -9,7 +9,7 @@ import { DeptSVG, H4 } from "./menubar";
 
 // 🧰 Utils and data
 import { palette } from "../resources/palette";
-import footerdata from "../resources/footerdata.json";
+import footer from "../data/footer.json";
 
 // 🌀 Variants
 
@@ -153,7 +153,7 @@ export default function Footer() {
           {/* Links to important pages on site */}
           <FlexSitemap>
             {" "}
-            {footerdata.map((item, index) => {
+            {footer.map((item, index) => {
               return (
                 <FooterLink key={index} href={item.link} target="_blank">
                   {item.name}

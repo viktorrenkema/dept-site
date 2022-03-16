@@ -1,5 +1,4 @@
 // 🖼️ Assets
-import headerImg from "../resources/images/header.jpg";
 import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";

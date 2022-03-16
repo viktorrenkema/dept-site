@@ -5,7 +5,7 @@ import styled from "styled-components";
 // 🌱 Components
 
 // 🧰 Utils and data
-import clients from "../resources/clientlist.json";
+import clients from "../data/clientlist.json";
 import { palette } from "../resources/palette";
 
 // 🌀 Variants
@@ -22,6 +22,7 @@ const ClientsWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 140px;
 `;
 
 const GridContainer = styled(motion.div)`
@@ -60,6 +61,7 @@ const Client = styled(motion.div)`
     /* Phone devices and **below** */
     width: 170px;
     height: 86px;
+    display: ${(props) => (props.priority ? "flex" : "none")};
   }
 `;
 
@@ -86,10 +88,6 @@ const Paragraph = styled(motion.p)`
 const ClientLogo = styled(motion.img)`
   max-width: 50%;
   max-height: 50%;
-  @media (max-width: 576px) {
-    /* Phone devices and **below** */
-    display: ${(props) => (props.priority ? "inline" : "none")};
-  }
 `;
 
 export default function Clients() {
@@ -105,12 +103,14 @@ export default function Clients() {
       <GridContainer>
         {clients.map((clt) => {
           return (
-            <Client key={clt.name}>
+            <Client
+              key={clt.name} // A priority prop is passed to determine which logo's to still show on smaller breakpoints
+              priority={clt.priority}
+              whileHover={{ opacity: 0.8 }}
+            >
               <ClientLogo
                 src={clt.logo}
                 alt={`The company logo of ${clt.name}`}
-                // A priority prop is passed to determine which logo's to still show on smaller breakpoints
-                priority={clt.priority}
               ></ClientLogo>
             </Client>
           );

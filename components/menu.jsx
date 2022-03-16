@@ -90,11 +90,8 @@ export default function Menu(props) {
   const { showMenu, setShowMenu } = props;
   const [navSelection, setNavSelection] = React.useState(0);
 
-  console.log(navSelection);
-
   // Only do something when the component mounts
   React.useEffect(() => {
-    console.log(navigationItems.length);
     let current = navSelection;
     // Assign the listener to a variable
     const listener = (event) => {
