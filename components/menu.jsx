@@ -67,11 +67,11 @@ const MenuItem = styled(motion.li)`
 const container = {
   hidden: {
     opacity: 0,
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+    transition: { staggerChildren: 0.07, staggerDirection: -1 },
   },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.07 },
+    transition: { staggerChildren: 0.14 },
   },
 };
 
@@ -164,7 +164,7 @@ export default function Menu(props) {
           <MenuItem
             key={index}
             variants={item}
-            animate={navSelection === index ? "active" : "inactive"}
+            // animate={navSelection === index ? "active" : "inactive"}
           >
             {navSelection === index && <ArrowSelection></ArrowSelection>}
             {i}
