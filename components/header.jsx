@@ -6,7 +6,6 @@ import styled from "styled-components";
 import headerImg from "../resources/images/header.jpg";
 
 // 🌱 Components
-import MenuBar from "./menubar";
 import Image from "next/image";
 import Button from "../components/button";
 
@@ -33,7 +32,6 @@ export default function Header(props) {
   const { setShowMenu, showMenu } = props;
   return (
     <HeaderCont>
-      <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar>
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"

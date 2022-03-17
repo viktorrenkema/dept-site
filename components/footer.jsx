@@ -27,7 +27,7 @@ const Container = styled(motion.div)`
 
 const FooterContainer = styled(motion.div)`
   display: flex;
-  width: 95%;
+  width: 90%;
   background-color: ${palette.black};
   flex-direction: column;
   align-items: center;
@@ -82,10 +82,11 @@ const FlexSocial = styled(motion.div)`
 
 const ScrollToTopWrapper = styled(motion.div)`
   display: flex;
-  justify-content: left;
-  align-items: left;
-  width: 20%;
-  background-color: ${palette.accent};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  background-color: ${palette.white};
   @media (max-width: 1200px) {
     display: none;
   }
@@ -134,6 +135,13 @@ const FooterDeptSVG = styled(DeptSVG)`
   @media (max-width: 1200px) {
     display: none;
   }
+`;
+
+const Span = styled(motion.span)`
+  font-size: 22px;
+  line-height: 32px;
+  font-family: "Teko Regular";
+  color: ${palette.accent};
 `;
 
 export default function Footer() {
@@ -188,7 +196,14 @@ export default function Footer() {
         </FlexLegal>
         <FlexCopyright />
       </FooterContainer>
-      <ScrollToTopWrapper></ScrollToTopWrapper>
+      <ScrollToTopWrapper
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
+        <ScrollToTopSVG></ScrollToTopSVG>
+        <Span>Top</Span>
+      </ScrollToTopWrapper>
     </Container>
   );
 }
@@ -241,5 +256,21 @@ function FacebookSVG(props) {
         <path d="M5 9.684v6.883H0V25h5v25h10V25h7.037s.652-4.051.963-8.463h-8v-5.756c0-.861 1.335-2.018 2.436-2.018H23V0h-7.564C4.719 0 5 8.426 5 9.684z"></path>
       </svg>
     </a>
+  );
+}
+
+function ScrollToTopSVG(props) {
+  return (
+    <svg
+      width="15"
+      height="32"
+      xmlns="http://www.w3.org/2000/svg"
+      fill={palette.accent}
+    >
+      <g fillRule="evenodd">
+        <path d="M6.5 9.5h3v22h-3z" />
+        <path d="M14.5 11.5L7.493.5.5 11.5z" />
+      </g>
+    </svg>
   );
 }

@@ -17,12 +17,13 @@ const overlayVariants = {
     width: "0%",
     height: "100vh",
     transitionEnd: {
-      display: "none",
+      visibility: "hidden",
     },
   },
   open: {
     width: "100vw",
     height: "100vh",
+    visibility: "visible",
   },
 };
 
@@ -152,7 +153,7 @@ export default function Menu(props) {
       initial={"closed"}
       transition={{ duration: 0.3, ease: "easeIn" }}
     >
-      <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar>
+      {/* <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar> */}
       <MenuFlex
         variants={container}
         initial="hidden"

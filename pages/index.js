@@ -9,6 +9,7 @@ import Clients from "../components/clients";
 import Header from "../components/header";
 import Cases from "../components/cases";
 import Menu from "../components/menu";
+import MenuBar from "../components/menubar";
 import Footer from "../components/footer";
 
 // 🖼️ Assets
@@ -34,6 +35,8 @@ export default function Home() {
       </Head>
 
       <main className="main">
+        <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar>
+
         <Header showMenu={showMenu} setShowMenu={setShowMenu}></Header>
         <Menu showMenu={showMenu} setShowMenu={setShowMenu}></Menu>
         <Cases></Cases>

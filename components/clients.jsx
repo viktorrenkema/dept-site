@@ -135,7 +135,6 @@ export default function Clients() {
               key={clt.name} // A priority prop is passed to determine which logo's to still show on smaller breakpoints
               priority={clt.priority}
               variants={item}
-              whileHover={{ opacity: 0.5 }}
             >
               <ClientLogo
                 src={clt.logo}
