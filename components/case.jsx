@@ -1,6 +1,7 @@
 // 📦 Packages
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { useClampedIsInViewport } from "../resources/hooks.jsx";
 
 // 🌱 Components
 import Image from "next/image";
@@ -12,6 +13,22 @@ import CaseLink from "./caselink";
 import { palette } from "../resources/palette";
 
 // 🌀 Variants
+const caseCard = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    transition: {
+      duration: 1,
+    },
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
 // 💅🏽 Styled Components
 const CaseCont = styled(motion.div)`
@@ -48,8 +65,17 @@ const Label = styled(motion.span)`
 export default function Case(props) {
   const { label, image, alttext, title, linkdestination, linktext } = props;
 
+  // Custom hook to detect whether an element has entered viewport at least once
+  const [isClampedInViewport, targetRef] = useClampedIsInViewport({
+    threshold: 30,
+  });
+
   return (
-    <CaseCont>
+    <CaseCont
+      variants={caseCard}
+      animate={isClampedInViewport ? "show" : "hidden"}
+      ref={targetRef}
+    >
       <Image
         src={image}
         alt={alttext}

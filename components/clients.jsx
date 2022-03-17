@@ -1,6 +1,8 @@
 // 📦 Packages
+import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { useClampedIsInViewport } from "../resources/hooks.jsx";
 
 // 🌱 Components
 
@@ -10,10 +12,37 @@ import { palette } from "../resources/palette";
 
 // 🌀 Variants
 
-// 💅🏽 Styled Components
+const container = {
+  hidden: {
+    opacity: 0,
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.07 },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
 
 // 🖼️ Assets
 
+// 💅🏽 Styled Components
 const ClientsWrapper = styled(motion.div)`
   width: 100%;
   position: relative;
@@ -26,7 +55,6 @@ const ClientsWrapper = styled(motion.div)`
 `;
 
 const GridContainer = styled(motion.div)`
-  /* width: 1000px; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -35,17 +63,6 @@ const GridContainer = styled(motion.div)`
     grid-template-columns: repeat(2, 170px);
     grid-template-rows: repeat(3, 86px);
   }
-`;
-
-const H1 = styled(motion.h1)`
-  font-size: calc(100vw / 3);
-  font-weight: 400;
-  font-family: "Teko";
-  position: absolute;
-  top: 20%;
-  left: 1rem;
-  margin: 0;
-  margin-left: 4rem;
 `;
 
 const Client = styled(motion.div)`
@@ -91,8 +108,14 @@ const ClientLogo = styled(motion.img)`
 `;
 
 export default function Clients() {
+  const [isClampedInViewport, targetRef] = useClampedIsInViewport({
+    threshold: 30,
+  });
+
   return (
-    <ClientsWrapper>
+    <ClientsWrapper
+      animate={isClampedInViewport ? { opacity: 1 } : { opacity: 0 }}
+    >
       <H2>Clients</H2>
       <Paragraph>
         We value a great working relationship with our clients above all else.
@@ -100,13 +123,19 @@ export default function Clients() {
         challenge and inspire them to reach for the stars.
       </Paragraph>
 
-      <GridContainer>
+      <GridContainer
+        ref={targetRef}
+        animate={isClampedInViewport ? "show" : "hidden"}
+        variants={container}
+        initial="hidden"
+      >
         {clients.map((clt) => {
           return (
             <Client
               key={clt.name} // A priority prop is passed to determine which logo's to still show on smaller breakpoints
               priority={clt.priority}
-              whileHover={{ opacity: 0.8 }}
+              variants={item}
+              whileHover={{ opacity: 0.5 }}
             >
               <ClientLogo
                 src={clt.logo}

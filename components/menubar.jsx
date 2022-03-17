@@ -1,8 +1,19 @@
-// 🖼️ Assets
-import Image from "next/image";
+// 📦 Packages
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
+// 🌱 Components
+import Image from "next/image";
+import Link from "next/link";
+
+// 🧰 Utils
 import { palette } from "../resources/palette";
+
+// 🌀 Variants
+
+// 💅🏽 Styled Components
+
+// 🖼️ Assets
 
 const MenuCont = styled(motion.div)`
   height: 53px;
@@ -31,6 +42,7 @@ const MenuButtonCont = styled(motion.div)`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 `;
 
 export const H4 = styled(motion.span)`
@@ -46,6 +58,7 @@ export const DeptSVG = styled(motion.svg)`
   width: 100px;
   height: 28px;
   z-index: 1;
+  cursor: pointer;
   @media (max-width: 576px) {
     /* Phone devices and **below** */
     width: 50px;
@@ -57,57 +70,27 @@ export default function MenuBar(props) {
   const { showMenu, setShowMenu } = props;
   return (
     <MenuCont showMenu={showMenu}>
-      <DeptSVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173 46">
-        <path
-          d="M 147.9 46 L 160.5 46 L 160.5 10.8 L 173 10.8 L 173 0 L 135.4 0 L 135.4 10.8 L 147.9 10.8 Z M 106.4 21.1 L 106.4 9.9 L 113.6 9.9 C 118.2 9.9 120.5 11.8 120.5 15.5 C 120.5 19.2 118.2 21.1 113.6 21.1 Z M 93.9 46 L 106.5 46 L 106.5 31 L 114 31 C 125.3 31 132.8 26.1 132.8 15.5 C 132.8 4.9 125.2 0 114 0 L 93.9 0 Z M 50.6 46 L 84.9 46 L 84.9 35.7 L 63.2 35.7 L 63.2 27.9 L 84.7 27.9 L 84.7 18 L 63.2 18 L 63.2 10.3 L 84.9 10.3 L 84.9 0 L 50.6 0 Z M 12.6 35.3 L 12.6 10.7 L 16.6 10.7 C 25.4 10.7 30.9 13.9 30.9 23 C 30.9 32.1 25.5 35.3 16.6 35.3 Z M 0 46 L 16.5 46 C 32.1 46 43.4 39.8 43.4 23 C 43.3 6.2 32 0 16.5 0 L 0 0 Z"
-          fill={showMenu ? "rgb(255,255,255)" : "rgb(0,0,0)"}
-        ></path>
-      </DeptSVG>
+      <Link href="/">
+        <DeptSVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173 46">
+          <motion.path
+            d="M 147.9 46 L 160.5 46 L 160.5 10.8 L 173 10.8 L 173 0 L 135.4 0 L 135.4 10.8 L 147.9 10.8 Z M 106.4 21.1 L 106.4 9.9 L 113.6 9.9 C 118.2 9.9 120.5 11.8 120.5 15.5 C 120.5 19.2 118.2 21.1 113.6 21.1 Z M 93.9 46 L 106.5 46 L 106.5 31 L 114 31 C 125.3 31 132.8 26.1 132.8 15.5 C 132.8 4.9 125.2 0 114 0 L 93.9 0 Z M 50.6 46 L 84.9 46 L 84.9 35.7 L 63.2 35.7 L 63.2 27.9 L 84.7 27.9 L 84.7 18 L 63.2 18 L 63.2 10.3 L 84.9 10.3 L 84.9 0 L 50.6 0 Z M 12.6 35.3 L 12.6 10.7 L 16.6 10.7 C 25.4 10.7 30.9 13.9 30.9 23 C 30.9 32.1 25.5 35.3 16.6 35.3 Z M 0 46 L 16.5 46 C 32.1 46 43.4 39.8 43.4 23 C 43.3 6.2 32 0 16.5 0 L 0 0 Z"
+            animate={{ fill: showMenu ? "rgb(255,255,255)" : "rgb(0,0,0)" }}
+            transition={{ duration: 0.3 }}
+            // fill={showMenu ? "rgb(255,255,255)" : "rgb(0,0,0)"}
+          ></motion.path>
+        </DeptSVG>
+      </Link>
       <MenuButtonCont
         onTap={() => {
           setShowMenu(!showMenu);
         }}
       >
         <H4>Menu</H4>
-        {/* <MenuSVG showMenu={showMenu}></MenuSVG> */}
         <MenuToggle showMenu={showMenu} />
       </MenuButtonCont>
     </MenuCont>
   );
 }
-
-// function MenuSVG(props) {
-//   return (
-//     <motion.svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-//       <motion.path
-//         d="M 0 13 L 20 13 L 20 15 L 0 15 Z"
-//         fill="rgb(0, 0, 0)"
-//       ></motion.path>
-//       <motion.path
-//         d="M 0 6 L 20 6 L 20 8 L 0 8 Z"
-//         fill="rgb(0, 0, 0)"
-//       ></motion.path>
-//     </motion.svg>
-//   );
-// }
-
-const firstLine = {
-  flat: {
-    d: "M 4 14 L 24 14",
-  },
-  closed: {
-    d: "M 5.313 22.5 L 22.313 5.5",
-  },
-};
-
-const secondLine = {
-  flat: {
-    d: "M 4 14 L 24 14",
-  },
-  closed: {
-    d: "M 5.313 5.5 L 22.313 22.5",
-  },
-};
 
 const MenuButton = styled(motion.div)`
   height: 20px;
@@ -140,40 +123,3 @@ const MenuToggle = ({ setShowMenu, showMenu }) => (
     </svg>
   </MenuButton>
 );
-
-// old
-function MenuSVG(props) {
-  return (
-    <motion.div
-      style={{ zIndex: 90, position: "relative", display: "inline-block" }}
-    >
-      <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="28"
-        height="28"
-        style={{ zIndex: 4 }}
-      >
-        <motion.path
-          // d="M 0 13 L 20 13 L 20 15 L 0 15 Z"
-          // transform={
-          //   props.showMenu ? "translate(0 10) rotate(-45 10 1)" : "none"
-          // }
-          variants={firstLine}
-          initial="flat"
-          animate={props.showMenu ? "closed" : "flat"}
-          fill="transparent"
-          strokeWidth="2"
-          stroke={props.showMenu ? "hsl(0, 0%, 100%)" : "rgb(0, 0, 0)"}
-        ></motion.path>
-        <motion.path
-          variants={secondLine}
-          initial="flat"
-          animate={props.showMenu ? "closed" : "flat"}
-          fill="transparent"
-          strokeWidth="2"
-          stroke={props.showMenu ? "hsl(0, 0%, 100%)" : "rgb(0, 0, 0)"}
-        ></motion.path>
-      </motion.svg>
-    </motion.div>
-  );
-}

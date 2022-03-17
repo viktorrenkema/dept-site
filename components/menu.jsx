@@ -16,6 +16,9 @@ const overlayVariants = {
   closed: {
     width: "0%",
     height: "100vh",
+    transitionEnd: {
+      display: "none",
+    },
   },
   open: {
     width: "100vw",
@@ -56,7 +59,7 @@ const MenuItem = styled(motion.li)`
   align-items: center;
   @media (min-width: 1200px) {
     /* Large devices and **higher** */
-    font-size: 110px;
+    font-size: 95px;
   }
 `;
 
@@ -80,6 +83,18 @@ const item = {
   },
   show: {
     x: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  active: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  inactive: {
+    opacity: 0.6,
     transition: {
       duration: 0.3,
     },
@@ -145,7 +160,11 @@ export default function Menu(props) {
       >
         {/* Render a list of navigation links in the menu */}
         {navigationItems.map((i, index) => (
-          <MenuItem key={index} variants={item}>
+          <MenuItem
+            key={index}
+            variants={item}
+            animate={navSelection === index ? "active" : "inactive"}
+          >
             {navSelection === index && <ArrowSelection></ArrowSelection>}
             {i}
           </MenuItem>
@@ -172,19 +191,3 @@ function ArrowSelection() {
     </svg>
   );
 }
-
-// Listen to keyboard events to navigate through the menu
-// React.useEffect(() => {
-//   document.addEventListener("keydown", listener);
-
-//   function listener(e) {
-//     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-//       setNavSelection(navSelection++);
-//     }
-//     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-//       setNavSelection(navSelection--);
-//     }
-//     return document.removeEventListener("keydown", listener);
-//   }
-
-// }, []);

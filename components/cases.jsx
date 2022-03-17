@@ -78,7 +78,6 @@ export default function Cases(props) {
       return i.category === industriesFilter;
     });
   }
-  console.log(filteredCases);
 
   return (
     <CasesCont>
