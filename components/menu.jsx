@@ -164,7 +164,7 @@ export default function Menu(props) {
           <MenuItem
             key={index}
             variants={item}
-            // animate={navSelection === index ? "active" : "inactive"}
+            animate={navSelection === index ? "active" : "inactive"}
           >
             {navSelection === index && <ArrowSelection></ArrowSelection>}
             {i}
