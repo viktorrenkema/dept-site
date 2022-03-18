@@ -17,7 +17,7 @@ import { palette } from "../resources/palette";
 // 🌀 Variants
 
 // 💅🏽 Styled Components
-const CasesCont = styled(motion.div)`
+const SectionCases = styled(motion.section)`
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -34,14 +34,14 @@ const CasesCont = styled(motion.div)`
 const FilterPanelWrapper = styled(motion.div)`
   margin: 60px 0rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%; /* todo */
   height: 32px; /* todo */
 `;
 
 const FiltersContainer = styled(motion.div)`
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 4px;
   height: 32px; /* todo */
   align-items: center;
@@ -58,6 +58,8 @@ const Select = styled.select`
   color: ${palette.black};
   border: 0px solid white;
   border-bottom: 1px solid black;
+  -webkit-appearance: none;
+  border-radius: 0px;
 `;
 
 const Option = styled.option`
@@ -70,17 +72,21 @@ const Option = styled.option`
 export default function Cases(props) {
   // Initiate state to keep track of filtering the list of cases
   const [industriesFilter, setIndustriesFilter] = React.useState("all");
+  const [filteredCases, setFilteredCases] = React.useState(cases);
 
   // Filter the cases based on the currently set filter
-  let filteredCases = cases;
-  if (industriesFilter !== "all") {
-    filteredCases = cases.filter((i) => {
-      return i.category === industriesFilter;
-    });
-  }
+  React.useEffect(() => {
+    let filteredCasesArr = cases;
+    if (industriesFilter !== "all") {
+      filteredCasesArr = cases.filter((i) => {
+        return i.category === industriesFilter;
+      });
+      setFilteredCases(filteredCasesArr);
+    }
+  }, [industriesFilter]);
 
   return (
-    <CasesCont>
+    <SectionCases>
       <FilterPanelWrapper>
         <FiltersContainer>
           <FilterH3>Show me all work in</FilterH3>
@@ -90,17 +96,17 @@ export default function Cases(props) {
             onChange={(e) => setIndustriesFilter(e.target.value)}
           >
             <Option value="all">all industries</Option>
-            <Option value="ecommerce">E-Commerce</Option>
-            <Option value="art">Art</Option>
-            <Option value="travel">Travel</Option>
-            <Option value="tech">Technology</Option>
+            <Option value="ecommerce">e-commerce</Option>
+            <Option value="art">art</Option>
+            <Option value="travel">travel</Option>
+            <Option value="tech">technology</Option>
           </Select>
         </FiltersContainer>
       </FilterPanelWrapper>{" "}
       {filteredCases.map((item, index) => {
         return (
           <Case
-            key={item.title}
+            key={index}
             label={item.label}
             image={item.image}
             alttext={item.alttext}
@@ -109,6 +115,6 @@ export default function Cases(props) {
           ></Case>
         );
       })}
-    </CasesCont>
+    </SectionCases>
   );
 }

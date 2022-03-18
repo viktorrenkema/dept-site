@@ -1,4 +1,5 @@
 // 📦 Packages
+import React from "react";
 import styled from "styled-components";
 import {
   motion,
@@ -20,7 +21,7 @@ import { palette } from "../resources/palette";
 
 // 🖼️ Assets
 
-const MenuCont = styled(motion.div)`
+const MenuCont = styled(motion.nav)`
   height: 53px;
   display: flex;
   justify-content: space-between;
@@ -37,8 +38,8 @@ const MenuCont = styled(motion.div)`
     border: none;
     background: ${(props) => (props.showMenu ? palette.black : palette.white)};
     top: 0rem;
-    margin: 0;
-    padding: 0rem 20px;
+    /* margin: 0;
+    padding: 0rem 20px; */
   }
 `;
 const MenuButtonCont = styled(motion.div)`
@@ -72,6 +73,12 @@ export const DeptSVG = styled(motion.svg)`
 
 export default function MenuBar(props) {
   const { showMenu, setShowMenu } = props;
+  const [viewportWidth, setViewportWidth] = React.useState(0);
+
+  // useEffect to get the viewport’s width
+  React.useEffect(() => {
+    setViewportWidth(window.innerWidth);
+  }, []);
 
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in pixels from top
 
@@ -87,8 +94,8 @@ export default function MenuBar(props) {
     <MenuCont
       showMenu={showMenu}
       style={{
-        margin: margin,
-        padding: padding,
+        margin: viewportWidth < 576 ? "0rem 0rem" : margin,
+        padding: viewportWidth < 576 ? "0rem 20px" : padding,
       }}
     >
       <Link href="/">

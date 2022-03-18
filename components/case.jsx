@@ -15,7 +15,7 @@ import { palette } from "../resources/palette";
 // 🌀 Variants
 const caseCard = {
   hidden: {
-    opacity: 0,
+    opacity: 0.2,
     y: 20,
     transition: {
       duration: 1,

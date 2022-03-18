@@ -11,16 +11,17 @@ import Button from "../components/button";
 
 // 🧰 Utils
 
-const HeaderCont = styled(motion.div)`
+const SectionHeader = styled(motion.header)`
   width: 100%;
   position: relative;
   z-index: 1;
 `;
 
 const H1 = styled(motion.h1)`
-  font-size: calc(100vw / 3);
+  font-size: calc(100vw / 4);
   font-weight: 400;
-  font-family: "Teko";
+  font-family: "Teko Medium";
+  font-style: normal;
   position: absolute;
   top: 20%;
   left: 1rem;
@@ -31,7 +32,7 @@ const H1 = styled(motion.h1)`
 export default function Header(props) {
   const { setShowMenu, showMenu } = props;
   return (
-    <HeaderCont>
+    <SectionHeader>
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
@@ -40,6 +41,6 @@ export default function Header(props) {
       ></Image>
       <H1>WORK</H1>
       <Button btntext="view case" to="https://www.deptagency.com/"></Button>
-    </HeaderCont>
+    </SectionHeader>
   );
 }

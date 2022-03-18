@@ -58,6 +58,7 @@ const MenuItem = styled(motion.li)`
   justify-content: flex-end;
   gap: 10px;
   align-items: center;
+  cursor: pointer;
   @media (min-width: 1200px) {
     /* Large devices and **higher** */
     font-size: 95px;
@@ -164,6 +165,9 @@ export default function Menu(props) {
           <MenuItem
             key={index}
             variants={item}
+            onTap={() => {
+              setNavSelection(index);
+            }}
             animate={navSelection === index ? "active" : "inactive"}
           >
             {navSelection === index && <ArrowSelection></ArrowSelection>}

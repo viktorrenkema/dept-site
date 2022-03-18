@@ -39,9 +39,13 @@ export default function CaseLink(props) {
   const { linkdestination, linktext } = props;
 
   return (
-    <CaseLinkContainer href={linkdestination} target="_blank">
+    <CaseLinkContainer
+      whileHover={{ opacity: 0.7 }}
+      href={linkdestination}
+      target="_blank"
+    >
       <LinkArrow></LinkArrow>
-      <Text>View case</Text>
+      <Text whileHover={{ textDecoration: "underline" }}>View case</Text>
     </CaseLinkContainer>
   );
 }

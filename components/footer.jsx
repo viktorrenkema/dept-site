@@ -14,7 +14,7 @@ import footer from "../data/footer.json";
 // 🌀 Variants
 
 // 💅🏽 Styled Components
-const Container = styled(motion.div)`
+const Container = styled(motion.footer)`
   display: flex;
   justify-content: left;
   align-items: left;
@@ -87,6 +87,7 @@ const ScrollToTopWrapper = styled(motion.div)`
   align-items: center;
   width: 10%;
   background-color: ${palette.white};
+  cursor: pointer;
   @media (max-width: 1200px) {
     display: none;
   }
@@ -197,6 +198,7 @@ export default function Footer() {
         <FlexCopyright />
       </FooterContainer>
       <ScrollToTopWrapper
+        whileHover={{ backgroundColor: "#f2f2f2" }}
         onClick={() => {
           window.scrollTo(0, 0);
         }}

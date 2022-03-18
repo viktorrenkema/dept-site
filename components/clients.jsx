@@ -43,7 +43,7 @@ const item = {
 // 🖼️ Assets
 
 // 💅🏽 Styled Components
-const ClientsWrapper = styled(motion.div)`
+const SectionCients = styled(motion.section)`
   width: 100%;
   position: relative;
   background: ${palette.lightgrey};
@@ -58,6 +58,7 @@ const GridContainer = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  height: -webkit-fill-available;
   @media (max-width: 576px) {
     /* Phone devices and **below** */
     grid-template-columns: repeat(2, 170px);
@@ -113,7 +114,7 @@ export default function Clients() {
   });
 
   return (
-    <ClientsWrapper
+    <SectionCients
       animate={isClampedInViewport ? { opacity: 1 } : { opacity: 0 }}
     >
       <H2>Clients</H2>
@@ -132,7 +133,8 @@ export default function Clients() {
         {clients.map((clt) => {
           return (
             <Client
-              key={clt.name} // A priority prop is passed to determine which logo's to still show on smaller breakpoints
+              key={clt.name}
+              // A priority prop is passed to determine which logo's to still show on smaller breakpoints
               priority={clt.priority}
               variants={item}
             >
@@ -144,6 +146,6 @@ export default function Clients() {
           );
         })}
       </GridContainer>
-    </ClientsWrapper>
+    </SectionCients>
   );
 }
