@@ -13,12 +13,12 @@ import { palette } from "../resources/palette";
 
 let navigationItems = [
   "Home",
-  "Werk",
-  "Over",
-  "Diensten",
-  "Partners",
+  "Work",
+  "Service",
   "Stories",
-  "Vacatures",
+  "About",
+  "Careers",
+  "Contact",
 ];
 
 // 🌀 Variants for animation
@@ -131,11 +131,10 @@ export default function Menu(props) {
     let current = navSelection;
     // Assign the listener to a variable
     const listener = (event) => {
-      // Prevent the window from scrolling from pressing arrow keys
-      event.preventDefault();
-
       // Arrow Right OR Arrow Down
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        // Prevent the window from scrolling from pressing arrow keys
+        event.preventDefault();
         if (current === navigationItems.length - 1) {
           current = 0;
           setNavSelection(current);
@@ -147,6 +146,8 @@ export default function Menu(props) {
 
       // Arrow Left OR Arrow Up
       if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        // Prevent the window from scrolling from pressing arrow keys
+        event.preventDefault();
         if (current === 0) {
           current = navigationItems.length - 1;
           setNavSelection(current);
@@ -173,7 +174,6 @@ export default function Menu(props) {
       initial={"closed"}
       transition={{ duration: 0.3, ease: "easeIn" }}
     >
-      {/* <MenuBar showMenu={showMenu} setShowMenu={setShowMenu}></MenuBar> */}
       <MenuFlex
         variants={container}
         initial="hidden"
