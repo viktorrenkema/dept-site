@@ -83,10 +83,14 @@ export default function MenuBar(props) {
   // To show the 'underline' for the menu bar on scroll, we take the scrollYProgress value and transform it into values that make sense for the padding/margin
   const scrollYToMarginRL = useTransform(scrollYProgress, [0, 0.3], [4, 0]);
   const scrollYToPaddingRL = useTransform(scrollYProgress, [0, 0.3], [0, 4]);
+  const scrollYToBgBlur = useTransform(scrollYProgress, [0.1, 0.2], [0, 10]);
+  const scrollYToTop = useTransform(scrollYProgress, [0, 0.1], [2, 0]);
 
   // Turn the above transformed values into a motion template literal
   const margin = useMotionTemplate`0rem ${scrollYToMarginRL}rem`;
   const padding = useMotionTemplate`0rem ${scrollYToPaddingRL}rem`;
+  const bgblur = useMotionTemplate`blur(${scrollYToBgBlur}px)`;
+  const top = useMotionTemplate`${scrollYToTop}rem`;
 
   return (
     <MenuCont
@@ -94,6 +98,8 @@ export default function MenuBar(props) {
       style={{
         margin: viewportWidth < 576 ? "0rem 0rem" : margin,
         padding: viewportWidth < 576 ? "0rem 20px" : padding,
+        backdropFilter: viewportWidth < 576 ? "blur(0px)" : bgblur,
+        top: viewportWidth < 576 ? "0rem" : top,
       }}
     >
       <Link href="/">
