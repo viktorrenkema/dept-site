@@ -54,21 +54,27 @@ const MenuFlex = styled(motion.ol)`
   justify-content: start;
 `;
 
-const MenuItem = styled(motion.li)`
+const MenuItemContainer = styled(motion.li)`
+  border-bottom: 1px solid ${palette.mediumgrey50};
+  width: 100%;
+  cursor: pointer;
+`;
+
+const MenuItem = styled(motion.h2)`
   text-decoration: none;
   font-family: "Teko Regular";
   font-size: 50px;
   line-height: 1;
   text-transform: uppercase;
   color: ${palette.white};
-  border-bottom: 1px solid ${palette.mediumgrey50};
-  width: 100%;
-  padding-top: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   align-items: center;
-  cursor: pointer;
+  border-bottom: 1px solid ${palette.mediumgrey50};
+  width: 100%;
   @media (min-width: 1200px) {
     /* Large devices and **higher** */
     font-size: 95px;
@@ -99,6 +105,9 @@ const item = {
       duration: 0.3,
     },
   },
+};
+
+const menuitem = {
   active: {
     opacity: 1,
     transition: {
@@ -172,17 +181,21 @@ export default function Menu(props) {
       >
         {/* Render a list of navigation links in the menu */}
         {navigationItems.map((i, index) => (
-          <MenuItem
+          <MenuItemContainer
             key={index}
             variants={item}
             onTap={() => {
               setNavSelection(index);
             }}
-            // animate={navSelection === index ? "active" : "inactive"}
           >
-            {navSelection === index && <ArrowSelection></ArrowSelection>}
-            {i}
-          </MenuItem>
+            <MenuItem
+              variants={menuitem}
+              animate={navSelection === index ? "active" : "inactive"}
+            >
+              {navSelection === index && <ArrowSelection></ArrowSelection>}
+              {i}
+            </MenuItem>
+          </MenuItemContainer>
         ))}
       </MenuFlex>
     </MenuOverlay>
