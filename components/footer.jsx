@@ -1,4 +1,5 @@
 // 📦 Packages
+import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -146,6 +147,8 @@ const Span = styled(motion.span)`
 `;
 
 export default function Footer() {
+  const [hoverScrollToTop, setHoverScrollToTop] = React.useState(false);
+
   return (
     <Container>
       <FooterContainer>
@@ -198,13 +201,29 @@ export default function Footer() {
         <FlexCopyright />
       </FooterContainer>
       <ScrollToTopWrapper
-        whileHover={{ backgroundColor: "#f2f2f2" }}
         onClick={() => {
           window.scrollTo(0, 0);
         }}
+        onHoverStart={() => {
+          setHoverScrollToTop(true);
+        }}
+        onHoverEnd={() => {
+          setHoverScrollToTop(false);
+        }}
+        animate={{
+          backgroundColor: hoverScrollToTop
+            ? palette.accent
+            : palette.lightgrey,
+        }}
       >
-        <ScrollToTopSVG></ScrollToTopSVG>
-        <Span>Top</Span>
+        <ScrollToTopSVG hoverScrollToTop={hoverScrollToTop}></ScrollToTopSVG>
+        <Span
+          animate={{
+            color: hoverScrollToTop ? palette.lightgrey : palette.accent,
+          }}
+        >
+          Top
+        </Span>
       </ScrollToTopWrapper>
     </Container>
   );
@@ -263,16 +282,19 @@ function FacebookSVG(props) {
 
 function ScrollToTopSVG(props) {
   return (
-    <svg
+    <motion.svg
       width="15"
       height="32"
       xmlns="http://www.w3.org/2000/svg"
-      fill={palette.accent}
+      animate={{
+        fill: props.hoverScrollToTop ? palette.lightgrey : palette.accent,
+        y: props.hoverScrollToTop ? -5 : 0,
+      }}
     >
-      <g fillRule="evenodd">
-        <path d="M6.5 9.5h3v22h-3z" />
-        <path d="M14.5 11.5L7.493.5.5 11.5z" />
-      </g>
-    </svg>
+      <motion.g fillRule="evenodd">
+        <motion.path d="M6.5 9.5h3v22h-3z" />
+        <motion.path d="M14.5 11.5L7.493.5.5 11.5z" />
+      </motion.g>
+    </motion.svg>
   );
 }

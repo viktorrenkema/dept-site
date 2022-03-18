@@ -40,6 +40,10 @@ h1 h2 h3 a {
   padding: 0;
 }
 
+a {
+  outline-color: #1a18f7;
+}
+
 .main {
   min-height: 100vh;
   flex: 1;
