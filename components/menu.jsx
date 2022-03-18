@@ -11,6 +11,16 @@ import MenuBar from "./menubar";
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
+let navigationItems = [
+  "Home",
+  "Werk",
+  "Over",
+  "Diensten",
+  "Partners",
+  "Stories",
+  "Vacatures",
+];
+
 // 🌀 Variants for animation
 const overlayVariants = {
   closed: {
@@ -168,7 +178,7 @@ export default function Menu(props) {
             onTap={() => {
               setNavSelection(index);
             }}
-            animate={navSelection === index ? "active" : "inactive"}
+            // animate={navSelection === index ? "active" : "inactive"}
           >
             {navSelection === index && <ArrowSelection></ArrowSelection>}
             {i}
@@ -178,16 +188,6 @@ export default function Menu(props) {
     </MenuOverlay>
   );
 }
-
-let navigationItems = [
-  "Home",
-  "Werk",
-  "Over",
-  "Diensten",
-  "Partners",
-  "Stories",
-  "Vacatures",
-];
 
 function ArrowSelection() {
   return (
