@@ -83,6 +83,9 @@ export default function Cases(props) {
       });
       setFilteredCases(filteredCasesArr);
     }
+    if (industriesFilter === "all") {
+      setFilteredCases(cases);
+    }
   }, [industriesFilter]);
 
   return (

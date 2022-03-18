@@ -38,8 +38,6 @@ const MenuCont = styled(motion.nav)`
     border: none;
     background: ${(props) => (props.showMenu ? palette.black : palette.white)};
     top: 0rem;
-    /* margin: 0;
-    padding: 0rem 20px; */
   }
 `;
 const MenuButtonCont = styled(motion.div)`
@@ -80,7 +78,7 @@ export default function MenuBar(props) {
     setViewportWidth(window.innerWidth);
   }, []);
 
-  let { scrollYProgress } = useViewportScroll(); // Track the y scroll in pixels from top
+  let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1
 
   // To show the 'underline' for the menu bar on scroll, we take the scrollYProgress value and transform it into values that make sense for the padding/margin
   const scrollYToMarginRL = useTransform(scrollYProgress, [0, 0.3], [4, 0]);
