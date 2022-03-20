@@ -99,6 +99,7 @@ export default function MenuBar(props) {
         margin: viewportWidth < 576 ? "0rem 0rem" : margin,
         padding: viewportWidth < 576 ? "0rem 20px" : padding,
         backdropFilter: viewportWidth < 576 ? "blur(0px)" : bgblur,
+        WebkitBackdropFilter: viewportWidth < 576 ? "blur(0px)" : bgblur,
         top: viewportWidth < 576 ? "0rem" : top,
       }}
     >

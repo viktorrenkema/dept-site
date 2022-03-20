@@ -61,8 +61,9 @@ const GridContainer = styled(motion.div)`
   height: -webkit-fill-available;
   @media (max-width: 576px) {
     /* Phone devices and **below** */
-    grid-template-columns: repeat(2, 170px);
+    grid-template-columns: repeat(2, 40%);
     grid-template-rows: repeat(3, 86px);
+    height: fit-content;
   }
 `;
 
@@ -106,6 +107,10 @@ const Paragraph = styled(motion.p)`
 const ClientLogo = styled(motion.img)`
   max-width: 50%;
   max-height: 50%;
+  @media (max-width: 576px) {
+    max-width: 65%;
+    max-height: 65%;
+  }
 `;
 
 export default function Clients() {

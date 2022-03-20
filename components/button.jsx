@@ -53,7 +53,11 @@ export default function Button(props) {
   const { width, btntext, to } = props;
   return (
     <Link href={to} target="_blank">
-      <ButtonCont width={width}>
+      <ButtonCont
+        width={width}
+        whileHover={{ backgroundColor: palette.accent }}
+      >
+        {" "}
         <ButtonText>{btntext}</ButtonText>
       </ButtonCont>
     </Link>

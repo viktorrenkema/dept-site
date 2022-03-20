@@ -28,6 +28,7 @@ const SectionCases = styled(motion.section)`
   @media (max-width: 768px) {
     /* Phone devices and **below** */
     flex-direction: column;
+    gap: 0px;
   }
 `;
 

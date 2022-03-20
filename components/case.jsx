@@ -42,6 +42,7 @@ const CaseCont = styled(motion.div)`
     /* Phone devices and **below** */
     flex-direction: column;
     width: 100%;
+    margin-bottom: 46px;
   }
 `;
 
@@ -79,10 +80,9 @@ export default function Case(props) {
       <Image
         src={image}
         alt={alttext}
-        layout="intrinsic"
+        layout="responsive"
         objectFit="cover"
-        // height="100%"
-        width="100%"
+        width="350px"
         height="350px"
       ></Image>
       <Label>{label}</Label>
