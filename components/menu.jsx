@@ -58,6 +58,7 @@ const MenuItemContainer = styled(motion.li)`
   border-bottom: 1px solid ${palette.mediumgrey50};
   width: 100%;
   cursor: pointer;
+  overflow: hidden;
 `;
 
 const MenuItem = styled(motion.h2)`
@@ -73,8 +74,8 @@ const MenuItem = styled(motion.h2)`
   justify-content: flex-end;
   gap: 10px;
   align-items: center;
-  border-bottom: 1px solid ${palette.mediumgrey50};
   width: 100%;
+  border-bottom: 1px solid ${palette.mediumgrey50};
   @media (min-width: 1200px) {
     /* Large devices and **higher** */
     font-size: 95px;
@@ -84,37 +85,35 @@ const MenuItem = styled(motion.h2)`
 const container = {
   hidden: {
     opacity: 0,
-    transition: { staggerChildren: 0.07, staggerDirection: -1 },
   },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.14 },
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
   },
 };
 
 const item = {
   hidden: {
     x: 100,
-    transition: {
-      duration: 0.3,
-    },
   },
   show: {
     x: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.4,
     },
   },
 };
 
 const menuitem = {
   active: {
+    x: [0, -10],
     opacity: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.6,
     },
   },
   inactive: {
+    x: 0,
     opacity: 0.6,
     transition: {
       duration: 0.3,
