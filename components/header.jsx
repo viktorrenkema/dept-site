@@ -1,4 +1,5 @@
 // 📦 Packages
+import React from "react";
 import {
   motion,
   useViewportScroll,
@@ -23,25 +24,25 @@ const SectionHeader = styled(motion.header)`
   z-index: 1;
   border-color: ${palette.white};
   border-style: solid;
-  border-width: 20px;
+  /* border-width: 20px; */
 `;
 
 const H1 = styled(motion.h1)`
-  font-size: calc(100vw / 4);
+  font-size: calc(100vw / 3);
   font-weight: 400;
-  font-family: "Teko Medium";
+  font-family: "Teko Regular";
   font-style: normal;
   position: absolute;
   top: 20%;
-  left: 1rem;
   margin: 0;
-  margin-left: 4rem;
+  margin-left: 10%;
 `;
 
 export default function Header(props) {
   const { setShowMenu, showMenu } = props;
 
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1
+  const [viewportWidth, setViewportWidth] = React.useState(0);
 
   // To show the border slowly increase to 10px on scroll, we take the scrollYProgress value and transform it into values that make sense for the border
   const scrollYToMarginRL = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
@@ -49,8 +50,15 @@ export default function Header(props) {
   // Turn the above transformed values into a motion template literal
   const border = useMotionTemplate`${scrollYToMarginRL}px`;
 
+  // useEffect to get the viewport’s width
+  React.useEffect(() => {
+    setViewportWidth(window.innerWidth);
+  }, []);
+
   return (
-    <SectionHeader style={{ borderWidth: border }}>
+    <SectionHeader
+      style={{ borderWidth: viewportWidth < 576 ? "0px" : border }}
+    >
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
