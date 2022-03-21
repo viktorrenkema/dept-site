@@ -61,7 +61,10 @@ const MenuItemContainer = styled(motion.li)`
   overflow: hidden;
 `;
 
-const MenuItem = styled(motion.h2)`
+const MenuH2Wrapper = styled(motion.div)`
+  width: 100%;
+`;
+const MenuH2 = styled(motion.h2)`
   text-decoration: none;
   font-family: "Teko Regular";
   font-size: 50px;
@@ -75,7 +78,6 @@ const MenuItem = styled(motion.h2)`
   gap: 10px;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid ${palette.mediumgrey50};
   @media (min-width: 1200px) {
     /* Large devices and **higher** */
     font-size: 95px;
@@ -92,7 +94,7 @@ const container = {
   },
 };
 
-const item = {
+const stagger = {
   hidden: {
     x: 100,
   },
@@ -104,7 +106,7 @@ const item = {
   },
 };
 
-const menuitem = {
+const focusvariants = {
   active: {
     x: [0, -10],
     opacity: 1,
@@ -182,18 +184,19 @@ export default function Menu(props) {
         {navigationItems.map((i, index) => (
           <MenuItemContainer
             key={index}
-            variants={item}
             onTap={() => {
               setNavSelection(index);
             }}
           >
-            <MenuItem
-              variants={menuitem}
-              animate={navSelection === index ? "active" : "inactive"}
-            >
-              {navSelection === index && <ArrowSelection></ArrowSelection>}
-              {i}
-            </MenuItem>
+            <MenuH2Wrapper variants={stagger}>
+              <MenuH2
+                variants={focusvariants}
+                animate={navSelection === index ? "active" : "inactive"}
+              >
+                {navSelection === index && <ArrowSelection></ArrowSelection>}
+                {i}
+              </MenuH2>
+            </MenuH2Wrapper>
           </MenuItemContainer>
         ))}
       </MenuFlex>
