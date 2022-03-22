@@ -5,7 +5,7 @@ import { useClampedIsInViewport } from "../resources/hooks.jsx";
 
 // 🌱 Components
 import Image from "next/image";
-import CaseLink from "./caselink";
+import CaseLink from "./case-link";
 
 // 🖼️ Assets
 

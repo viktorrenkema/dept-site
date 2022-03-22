@@ -9,7 +9,7 @@ import Clients from "../components/clients";
 import Header from "../components/header";
 import Cases from "../components/cases";
 import Menu from "../components/menu";
-import MenuBar from "../components/menubar";
+import MenuBar from "../components/menu-bar";
 import Footer from "../components/footer";
 
 // 🖼️ Assets
