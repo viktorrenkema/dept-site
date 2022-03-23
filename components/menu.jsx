@@ -52,18 +52,21 @@ const container = {
   },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 const stagger = {
   hidden: {
+    opacity: 0,
     x: 100,
   },
   show: {
+    opacity: 1,
     x: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.8,
+      ease: "easeInOut",
     },
   },
 };
