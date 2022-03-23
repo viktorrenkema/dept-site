@@ -308,7 +308,7 @@ export default function Menu(props) {
       // Remove the event listener when the component is unmounted
       document.removeEventListener("keydown", listener);
     };
-  }, [toggleSelector]);
+  }, [toggleSelector, navSelection, countriesSelection]);
 
   return (
     <MenuOverlay
