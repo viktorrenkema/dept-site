@@ -11,8 +11,6 @@ import { palette } from "../resources/palette";
 
 const Link = styled.a`
   text-decoration: none;
-  /* width: ${(props) => (props.width ? props.width : "170px")};
-  height: 50px; */
 `;
 
 const ButtonCont = styled(motion.div)`

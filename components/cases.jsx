@@ -36,15 +36,14 @@ const FilterPanelWrapper = styled(motion.div)`
   margin: 60px 0rem;
   display: flex;
   justify-content: flex-end;
-  width: 100%; /* todo */
-  height: 32px; /* todo */
+  width: 100%;
 `;
 
 const FiltersContainer = styled(motion.div)`
   display: flex;
   justify-content: flex-end;
   gap: 4px;
-  height: 32px; /* todo */
+  height: 32px;
   align-items: center;
 `;
 
@@ -61,13 +60,6 @@ const Select = styled.select`
   border-bottom: 1px solid black;
   -webkit-appearance: none;
   border-radius: 0px;
-`;
-
-const Option = styled.option`
-  /* font-size: 12px;
-  line-height: 12px;
-  font-family: "Teko Light";
-  color: ${palette.black}; */
 `;
 
 export default function Cases(props) {
@@ -99,11 +91,11 @@ export default function Cases(props) {
             name="industries"
             onChange={(e) => setIndustriesFilter(e.target.value)}
           >
-            <Option value="all">all industries</Option>
-            <Option value="ecommerce">e-commerce</Option>
-            <Option value="art">art</Option>
-            <Option value="travel">travel</Option>
-            <Option value="tech">technology</Option>
+            <option value="all">all industries</option>
+            <option value="ecommerce">e-commerce</option>
+            <option value="art">art</option>
+            <option value="travel">travel</option>
+            <option value="tech">technology</option>
           </Select>
         </FiltersContainer>
       </FilterPanelWrapper>{" "}

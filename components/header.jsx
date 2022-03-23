@@ -24,7 +24,6 @@ const SectionHeader = styled(motion.header)`
   z-index: 1;
   border-color: ${palette.white};
   border-style: solid;
-  /* border-width: 20px; */
 `;
 
 const H1 = styled(motion.h1)`

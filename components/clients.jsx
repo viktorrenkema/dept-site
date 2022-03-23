@@ -7,7 +7,7 @@ import { useClampedIsInViewport } from "../resources/hooks.jsx";
 // 🌱 Components
 
 // 🧰 Utils and data
-import clients from "../data/clientlist.json";
+import clients from "../data/client-list.json";
 import { palette } from "../resources/palette";
 
 // 🌀 Variants
@@ -70,7 +70,6 @@ const GridContainer = styled(motion.div)`
 const Client = styled(motion.div)`
   width: 1fr;
   max-width: 250px;
-  /* height: 126px; */
   background: ${palette.lightgrey};
   display: flex;
   align-items: center;
@@ -107,6 +106,7 @@ const Paragraph = styled(motion.p)`
 const ClientLogo = styled(motion.img)`
   max-width: 50%;
   max-height: 50%;
+
   @media (max-width: 576px) {
     max-width: 65%;
     max-height: 65%;

@@ -51,9 +51,6 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  @media (max-width: 576px) {
-    /* Phone devices and **below** */
-  }
 }
 
 @media only screen and (max-width: 576px) {
