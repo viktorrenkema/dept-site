@@ -7,6 +7,7 @@ import {
   useTransform,
   useMotionTemplate,
 } from "framer-motion";
+import { useDebouncedCallback } from "use-debounce";
 
 // 🌱 Components
 import Link from "next/link";
@@ -69,9 +70,20 @@ export default function MenuBar(props) {
   const { showMenu, setShowMenu } = props;
   const [viewportWidth, setViewportWidth] = React.useState(0);
 
+  // Debounced callback to avoid performance issues on resize
+  const handleResize = useDebouncedCallback(
+    () => setViewportWidth(window.innerWidth),
+    200
+  );
+
   // useEffect to get the viewport’s width
   React.useEffect(() => {
     setViewportWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1

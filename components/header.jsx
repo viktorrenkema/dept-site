@@ -8,6 +8,7 @@ import {
   useMotionValue,
 } from "framer-motion";
 import styled from "styled-components";
+import { useDebouncedCallback } from "use-debounce";
 
 // 🖼️ Assets
 import headerImg from "../resources/images/header.jpg";
@@ -41,6 +42,7 @@ const H1 = styled(motion.h1)`
 
 export default function Header(props) {
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1
+  const [viewportWidth, setViewportWidth] = React.useState(0);
 
   // To show the border slowly increase to 10px on scroll, we take the scrollYProgress value and transform it into values that make sense for the border
   const scrollYToMarginRL = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
@@ -48,27 +50,25 @@ export default function Header(props) {
   // Turn the above transformed values into a motion template literal
   const border = useMotionTemplate`${scrollYToMarginRL}px`;
 
-  // useEffect to store the viewport’s width
-  const windowWidth = useMotionValue(0);
+  // Debounced callback to avoid performance issues on resize
+  const handleResize = useDebouncedCallback(
+    () => setViewportWidth(window.innerWidth),
+    200
+  );
 
-  // *todo*
-  // [] Add debouncing
-  // [] Not fully functional yet
   React.useEffect(() => {
-    windowWidth.set(window.innerWidth);
+    setViewportWidth(window.innerWidth);
 
-    const resize = () => {
-      windowWidth.set(window.innerWidth);
-    };
-
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [windowWidth]);
+  }, []);
 
   return (
-    <SectionHeader style={{ borderWidth: windowWidth < 576 ? "0px" : border }}>
+    <SectionHeader
+      style={{ borderWidth: viewportWidth < 576 ? "0px" : border }}
+    >
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
