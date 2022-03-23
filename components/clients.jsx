@@ -11,7 +11,6 @@ import clients from "../data/client-list.json";
 import { palette } from "../resources/palette";
 
 // 🌀 Variants
-
 const container = {
   hidden: {
     opacity: 0,
@@ -23,7 +22,7 @@ const container = {
   },
 };
 
-const item = {
+const client = {
   hidden: {
     opacity: 0,
     y: -10,
@@ -40,13 +39,11 @@ const item = {
   },
 };
 
-// 🖼️ Assets
-
 // 💅🏽 Styled Components
 const SectionCients = styled(motion.section)`
   width: 100%;
   position: relative;
-  background: ${palette.lightgrey};
+  background: ${palette.white300};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +67,7 @@ const GridContainer = styled(motion.div)`
 const Client = styled(motion.div)`
   width: 1fr;
   max-width: 250px;
-  background: ${palette.lightgrey};
+  background: ${palette.white300};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +84,7 @@ const H2 = styled(motion.h2)`
   font-size: 60px;
   line-height: 1;
   font-family: "Teko Light";
-  color: ${palette.black};
+  color: ${palette.black100};
   text-transform: uppercase;
   padding: 80px 0px 18px 0px;
 `;
@@ -98,7 +95,7 @@ const Paragraph = styled(motion.p)`
   max-width: 560px;
   line-height: 27px;
   font-family: "Arial";
-  color: ${palette.black};
+  color: ${palette.black100};
   text-align: center;
   padding-bottom: 82px;
 `;
@@ -141,7 +138,7 @@ export default function Clients() {
               key={clt.name}
               // A priority prop is passed to determine which logo's to still show on smaller breakpoints
               priority={clt.priority}
-              variants={item}
+              variants={client}
             >
               <ClientLogo
                 src={clt.logo}

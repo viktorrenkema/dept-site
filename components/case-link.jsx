@@ -33,18 +33,18 @@ const Text = styled(motion.span)`
   font-size: 14px;
   font-family: "Arial";
   text-transform: uppercase;
-  color: ${palette.accent};
+  color: ${palette.accent500};
   font-weight: 700;
   line-height: 30px;
 `;
 
 export default function CaseLink(props) {
-  const { linkdestination, linktext } = props;
+  const { url } = props;
   const [hoverLink, setHoverLink] = React.useState(false);
 
   return (
     <CaseLinkContainer
-      href={linkdestination}
+      href={url}
       target="_blank"
       onHoverStart={() => {
         setHoverLink(true);

@@ -9,25 +9,19 @@ import {
 } from "framer-motion";
 
 // 🌱 Components
-import Image from "next/image";
 import Link from "next/link";
 
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
-// 🌀 Variants
-
 // 💅🏽 Styled Components
-
-// 🖼️ Assets
-
 const MenuCont = styled(motion.nav)`
   height: 53px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1;
-  border-bottom: 1px solid ${palette.black};
+  border-bottom: 1px solid ${palette.black100};
   position: fixed;
   top: 2rem;
   left: 0;
@@ -36,10 +30,12 @@ const MenuCont = styled(motion.nav)`
   @media (max-width: 576px) {
     /* Phone devices and **below** */
     border: none;
-    background: ${(props) => (props.showMenu ? palette.black : palette.white)};
+    background: ${(props) =>
+      props.showMenu ? palette.black100 : palette.white100};
     top: 0rem;
   }
 `;
+
 const MenuButtonCont = styled(motion.div)`
   display: flex;
   justify-content: center;

@@ -7,8 +7,6 @@ import { useClampedIsInViewport } from "../resources/hooks.jsx";
 import Image from "next/image";
 import CaseLink from "./case-link";
 
-// 🖼️ Assets
-
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
@@ -50,21 +48,21 @@ export const H3 = styled(motion.h3)`
   font-size: 30px;
   line-height: 32px;
   font-family: "Teko Light";
-  color: ${palette.black};
+  color: ${palette.black100};
 `;
 
 const Label = styled(motion.span)`
   font-size: 15px;
   font-family: "Arial";
   text-transform: uppercase;
-  color: ${palette.grey};
+  color: ${palette.grey400};
   font-weight: 700;
   line-height: 30px;
   padding: 16px 0px 12px 0px;
 `;
 
 export default function Case(props) {
-  const { label, image, alttext, title, linkdestination, linktext } = props;
+  const { label, image, alt, title, url } = props;
 
   // Custom hook to detect whether an element has entered viewport at least once
   const [isClampedInViewport, targetRef] = useClampedIsInViewport({
@@ -79,7 +77,7 @@ export default function Case(props) {
     >
       <Image
         src={image}
-        alt={alttext}
+        alt={alt}
         layout="responsive"
         objectFit="cover"
         width="350px"
@@ -87,10 +85,7 @@ export default function Case(props) {
       ></Image>
       <Label>{label}</Label>
       <H3>{title}</H3>
-      <CaseLink
-        linkdestination={linkdestination}
-        linktext={linktext}
-      ></CaseLink>
+      <CaseLink url={url}></CaseLink>
     </CaseCont>
   );
 }

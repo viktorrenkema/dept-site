@@ -1,6 +1,4 @@
 // 📦 Packages
-import { motion } from "framer-motion";
-import styled from "styled-components";
 import React from "react";
 
 // 🌱 Components
@@ -11,16 +9,6 @@ import Cases from "../components/cases";
 import Menu from "../components/menu";
 import MenuBar from "../components/menu-bar";
 import Footer from "../components/footer";
-
-// 🖼️ Assets
-
-// 🧰 Utils
-import { palette } from "../resources/palette";
-import styles from "../styles/Home.module.css";
-
-// 🌀 Variants
-
-// 💅🏽 Styled Components
 
 export default function Home() {
   // Allows for toggling the menu

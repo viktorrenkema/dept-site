@@ -4,17 +4,12 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 // 🌱 Components
-import Image from "next/image";
 import Case from "./case";
 import { H3 } from "./case";
-
-// 🖼️ Assets
 
 // 🧰 Utils and data
 import cases from "../data/cases.json";
 import { palette } from "../resources/palette";
-
-// 🌀 Variants
 
 // 💅🏽 Styled Components
 const SectionCases = styled(motion.section)`
@@ -48,14 +43,14 @@ const FiltersContainer = styled(motion.div)`
 `;
 
 const FilterH3 = styled(H3)`
-  color: ${palette.mediumgrey};
+  color: ${palette.grey300};
 `;
 
 const Select = styled.select`
   font-size: 30px;
   line-height: 32px;
   font-family: "Teko Light";
-  color: ${palette.black};
+  color: ${palette.black100};
   border: 0px solid white;
   border-bottom: 1px solid black;
   -webkit-appearance: none;
@@ -105,9 +100,9 @@ export default function Cases(props) {
             key={index}
             label={item.label}
             image={item.image}
-            alttext={item.alttext}
+            alt={item.alt}
             title={item.title}
-            linkdestination={item.linkdestination}
+            target={item.target}
           ></Case>
         );
       })}

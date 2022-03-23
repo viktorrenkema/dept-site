@@ -2,10 +2,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-// 🌱 Components
-
-// 🖼️ Assets
-
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
@@ -14,7 +10,7 @@ const Link = styled.a`
 `;
 
 const ButtonCont = styled(motion.div)`
-  background-color: ${palette.black};
+  background-color: ${palette.black100};
   width: ${(props) => (props.width ? props.width : "170px")};
   height: 50px;
   display: flex;
@@ -48,15 +44,15 @@ const ButtonText = styled(motion.span)`
 `;
 
 export default function Button(props) {
-  const { width, btntext, to } = props;
+  const { width, buttonText, to } = props;
   return (
     <Link href={to} target="_blank">
       <ButtonCont
         width={width}
-        whileHover={{ backgroundColor: palette.accent }}
+        whileHover={{ backgroundColor: palette.accent500 }}
       >
         {" "}
-        <ButtonText>{btntext}</ButtonText>
+        <ButtonText>{buttonText}</ButtonText>
       </ButtonCont>
     </Link>
   );

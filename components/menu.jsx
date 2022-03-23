@@ -31,7 +31,7 @@ let navigation = [
 ];
 
 // 🌀 Variants for animation
-const overlayVariants = {
+const overlay = {
   closed: {
     width: "0%",
     height: "100vh",
@@ -68,7 +68,7 @@ const stagger = {
   },
 };
 
-const focusvariants = {
+const focus = {
   active: {
     x: [0, -10],
     opacity: 1,
@@ -85,7 +85,7 @@ const focusvariants = {
   },
 };
 
-const focuscountriesvariants = {
+const focusCountries = {
   active: {
     x: 5,
     opacity: 1,
@@ -110,7 +110,7 @@ const focuscountriesvariants = {
 
 // 💅🏽 Styled Components
 const MenuOverlay = styled(motion.div)`
-  background: ${palette.black};
+  background: ${palette.black100};
   z-index: 3;
   position: fixed;
   top: 0rem;
@@ -126,7 +126,7 @@ const FlexSocial = styled(motion.div)`
   bottom: 0;
   left: 0;
   padding: 0px 0px 50px 4rem;
-  background: ${palette.black};
+  background: ${palette.black100};
   width: 200px;
   @media (max-width: 768px) {
     /* Large devices and **lower** */
@@ -140,7 +140,7 @@ const SocialOption = styled(motion.span)`
   font-weight: 700;
   line-height: 19px;
   text-transform: uppercase;
-  color: ${palette.white};
+  color: ${palette.white100};
   display: flex;
   align-items: center;
 `;
@@ -154,7 +154,7 @@ const CountryPicker = styled(motion.div)`
   top: 0;
   left: 0;
   padding: 98px 0px 0px 4rem;
-  background: ${palette.black};
+  background: ${palette.black100};
   width: 200px;
   height: 300px;
   @media (max-width: 768px) {
@@ -169,7 +169,7 @@ const CountryPickerOption = styled(motion.span)`
   font-weight: 700;
   line-height: 19px;
   text-transform: uppercase;
-  color: ${palette.white};
+  color: ${palette.white100};
   display: flex;
   align-items: center;
 `;
@@ -183,7 +183,7 @@ const MenuFlex = styled(motion.ol)`
 `;
 
 const MenuItemContainer = styled(motion.li)`
-  border-bottom: 1px solid ${palette.mediumgrey50};
+  border-bottom: 1px solid ${palette.grey30050};
   width: 100%;
   cursor: pointer;
   overflow: hidden;
@@ -198,7 +198,7 @@ const MenuH2 = styled(motion.h2)`
   font-size: 50px;
   line-height: 1;
   text-transform: uppercase;
-  color: ${palette.white};
+  color: ${palette.white100};
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -312,7 +312,7 @@ export default function Menu(props) {
 
   return (
     <MenuOverlay
-      variants={overlayVariants}
+      variants={overlay}
       animate={showMenu ? "open" : "closed"}
       initial={"closed"}
       transition={{ duration: 0.3, ease: "easeIn" }}
@@ -325,7 +325,7 @@ export default function Menu(props) {
         {countries.map((country, index) => (
           <CountryPickerOption
             key={index}
-            variants={focuscountriesvariants}
+            variants={focusCountries}
             animate={
               toggleSelector
                 ? "dim"
@@ -364,7 +364,7 @@ export default function Menu(props) {
           >
             <MenuH2Wrapper variants={stagger}>
               <MenuH2
-                variants={focusvariants}
+                variants={focus}
                 animate={navSelection === index ? "active" : "inactive"}
               >
                 {navSelection === index && <ArrowSelection></ArrowSelection>}

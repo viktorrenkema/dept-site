@@ -18,11 +18,12 @@ import Button from "../components/button";
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
+// 💅🏽 Styled Components
 const SectionHeader = styled(motion.header)`
   width: 100%;
   position: relative;
   z-index: 1;
-  border-color: ${palette.white};
+  border-color: ${palette.white100};
   border-style: solid;
 `;
 
@@ -38,8 +39,6 @@ const H1 = styled(motion.h1)`
 `;
 
 export default function Header(props) {
-  const { setShowMenu, showMenu } = props;
-
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1
   const [viewportWidth, setViewportWidth] = React.useState(0);
 
@@ -65,7 +64,7 @@ export default function Header(props) {
         objectFit="cover"
       ></Image>
       <H1>WORK</H1>
-      <Button btntext="view case" to="https://www.deptagency.com/"></Button>
+      <Button buttonText="view case" to="https://www.deptagency.com/"></Button>
     </SectionHeader>
   );
 }

@@ -4,15 +4,11 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 // 🌱 Components
-import { DeptSVG, H4 } from "./menu-bar";
-
-// 🖼️ Assets
+import { DeptSVG } from "./menu-bar";
 
 // 🧰 Utils and data
 import { palette } from "../resources/palette";
 import footer from "../data/footer.json";
-
-// 🌀 Variants
 
 // 💅🏽 Styled Components
 const Container = styled(motion.footer)`
@@ -29,7 +25,7 @@ const Container = styled(motion.footer)`
 const FooterContainer = styled(motion.div)`
   display: flex;
   width: 90%;
-  background-color: ${palette.black};
+  background-color: ${palette.black100};
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -87,7 +83,7 @@ const ScrollToTopWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   width: 10%;
-  background-color: ${palette.white};
+  background-color: ${palette.white100};
   cursor: pointer;
   @media (max-width: 1200px) {
     display: none;
@@ -95,7 +91,7 @@ const ScrollToTopWrapper = styled(motion.div)`
 `;
 
 const FooterLink = styled(motion.a)`
-  color: ${palette.white};
+  color: ${palette.white100};
   text-decoration: none;
   font-family: "Teko Regular";
   font-size: 18px;
@@ -124,7 +120,7 @@ const FlexCopyright = styled(motion.div)`
 `;
 
 const Legal = styled(motion.span)`
-  color: ${palette.anothergrey};
+  color: ${palette.grey500};
   text-decoration: none;
   font-family: "Arial";
   font-size: 13px;
@@ -143,7 +139,7 @@ const Span = styled(motion.span)`
   font-size: 22px;
   line-height: 32px;
   font-family: "Teko Regular";
-  color: ${palette.accent};
+  color: ${palette.accent500};
 `;
 
 export default function Footer() {
@@ -212,14 +208,14 @@ export default function Footer() {
         }}
         animate={{
           backgroundColor: hoverScrollToTop
-            ? palette.accent
-            : palette.lightgrey,
+            ? palette.accent500
+            : palette.white300,
         }}
       >
         <ScrollToTopSVG hoverScrollToTop={hoverScrollToTop}></ScrollToTopSVG>
         <Span
           animate={{
-            color: hoverScrollToTop ? palette.lightgrey : palette.accent,
+            color: hoverScrollToTop ? palette.white300 : palette.accent500,
           }}
         >
           Top
@@ -237,7 +233,7 @@ function InstagramSVG(props) {
         width="24"
         height="24"
         viewBox="0 0 14 14"
-        fill={palette.white}
+        fill={palette.white100}
       >
         <motion.path
           fillRule="evenodd"
@@ -256,7 +252,7 @@ function TwitterSVG(props) {
         width="24"
         height="22"
         viewBox="0 0 50 50"
-        fill={palette.white}
+        fill={palette.white100}
       >
         <path d="M49.998 9.35a20.256 20.256 0 0 1-5.891 1.631 10.378 10.378 0 0 0 4.51-5.725 20.57 20.57 0 0 1-6.518 2.516A10.186 10.186 0 0 0 34.613 4.5c-5.666 0-10.257 4.637-10.257 10.352 0 .812.09 1.604.266 2.359-8.523-.432-16.082-4.553-21.14-10.818a10.354 10.354 0 0 0-1.387 5.203c0 3.596 1.812 6.766 4.562 8.619a10.163 10.163 0 0 1-4.646-1.301v.129c0 5.016 3.537 9.201 8.227 10.154a10.36 10.36 0 0 1-2.703.361 9.69 9.69 0 0 1-1.931-.191c1.306 4.117 5.093 7.109 9.58 7.191a20.461 20.461 0 0 1-12.738 4.426c-.828 0-1.644-.053-2.446-.143A28.805 28.805 0 0 0 15.722 45.5c18.868 0 29.182-15.777 29.182-29.461l-.035-1.34a20.616 20.616 0 0 0 5.129-5.349z"></path>
       </svg>
@@ -272,7 +268,7 @@ function FacebookSVG(props) {
         width="11"
         height="27"
         viewBox="0 0 23 50"
-        fill={palette.white}
+        fill={palette.white100}
       >
         <path d="M5 9.684v6.883H0V25h5v25h10V25h7.037s.652-4.051.963-8.463h-8v-5.756c0-.861 1.335-2.018 2.436-2.018H23V0h-7.564C4.719 0 5 8.426 5 9.684z"></path>
       </svg>
@@ -287,7 +283,7 @@ function ScrollToTopSVG(props) {
       height="32"
       xmlns="http://www.w3.org/2000/svg"
       animate={{
-        fill: props.hoverScrollToTop ? palette.lightgrey : palette.accent,
+        fill: props.hoverScrollToTop ? palette.white300 : palette.accent500,
         y: props.hoverScrollToTop ? -5 : 0,
       }}
     >
