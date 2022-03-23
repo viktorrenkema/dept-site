@@ -10,7 +10,7 @@ import React from "react";
 // 🧰 Utils
 import { palette } from "../resources/palette";
 
-let countries = [
+const countries = [
   "Global",
   "Nederland",
   "United States",
@@ -20,7 +20,7 @@ let countries = [
   "Schweiz",
 ];
 
-let navigation = [
+const navigation = [
   "Home",
   "Work",
   "Service",
