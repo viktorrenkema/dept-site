@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useClampedIsInViewport } from "../resources/hooks.jsx";
+import { useClampedIsInViewport } from "../resources/hooks.js";
 
 // 🌱 Components
 

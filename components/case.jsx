@@ -1,7 +1,7 @@
 // 📦 Packages
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useClampedIsInViewport } from "../resources/hooks.jsx";
+import { useClampedIsInViewport } from "../resources/hooks.js";
 
 // 🌱 Components
 import Image from "next/image";
