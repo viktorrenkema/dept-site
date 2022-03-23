@@ -76,7 +76,7 @@ const Client = styled(motion.div)`
     /* Phone devices and **below** */
     width: 170px;
     height: 86px;
-    display: ${(props) => (props.priority ? "flex" : "none")};
+    display: ${(props) => (props.priority === "true" ? "flex" : "none")};
   }
 `;
 
@@ -137,7 +137,7 @@ export default function Clients() {
             <Client
               key={clt.name}
               // A priority prop is passed to determine which logo's to still show on smaller breakpoints
-              priority={clt.priority}
+              priority={clt.priority.toString()}
               variants={client}
             >
               <ClientLogo

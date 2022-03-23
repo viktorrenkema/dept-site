@@ -32,7 +32,7 @@ const MenuContainer = styled(motion.nav)`
     /* Phone devices and **below** */
     border: none;
     background: ${(props) =>
-      props.showMenu ? palette.black100 : palette.white100};
+      props.$showMenu ? palette.black100 : palette.white100};
     top: 0rem;
   }
 `;
@@ -102,7 +102,7 @@ export default function MenuBar(props) {
 
   return (
     <MenuContainer
-      showMenu={showMenu}
+      $showMenu={showMenu}
       style={{
         margin: viewportWidth < 576 ? "0rem 0rem" : margin,
         padding: viewportWidth < 576 ? "0rem 20px" : padding,
