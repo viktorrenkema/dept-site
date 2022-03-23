@@ -233,26 +233,19 @@ export default function Menu(props) {
     let currentCountries = countriesSelection;
     // Assign the listener to a variable
     const listener = (event) => {
-      // Listeners to go left/right between countries and nav
-      // Arrow Right
-      if (event.key === "ArrowRight") {
-        // Prevent the window from scrolling from pressing arrow keys
+      // Listeners to navigate left & right between Countries and Nav
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
-        setToggleSelector(!toggleSelector);
-      }
-
-      // Arrow Left
-      if (event.key === "ArrowLeft") {
-        // Prevent the window from scrolling from pressing arrow keys
-        event.preventDefault();
+        //
         setToggleSelector(!toggleSelector);
       }
 
       // Listeners to go up and down
-      // Arrow Down
+      //    Arrow Down
       if (event.key === "ArrowDown") {
         // Prevent the window from scrolling from pressing arrow keys
         event.preventDefault();
+
         // toggleSelector true means we're in larger nav
         if (toggleSelector) {
           if (current === navigation.length - 1) {
