@@ -358,9 +358,9 @@ export default function Menu(props) {
         {navigation.map((i, index) => (
           <MenuItemContainer
             key={i}
-            onTap={React.useCallback(() => {
+            onTap={() => {
               setNavSelection(index);
-            }, [])}
+            }}
           >
             <MenuH2Wrapper variants={stagger}>
               <MenuH2
