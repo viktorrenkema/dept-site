@@ -197,15 +197,15 @@ export default function Footer() {
         <FlexCopyright />
       </FooterContainer>
       <ScrollToTopWrapper
-        onClick={() => {
+        onClick={React.useCallback(() => {
           window.scrollTo(0, 0);
-        }}
-        onHoverStart={() => {
+        }, [])}
+        onHoverStart={React.useCallback(() => {
           setHoverScrollToTop(true);
-        }}
-        onHoverEnd={() => {
+        }, [])}
+        onHoverEnd={React.useCallback(() => {
           setHoverScrollToTop(false);
-        }}
+        }, [])}
         animate={{
           backgroundColor: hoverScrollToTop
             ? palette.accent500

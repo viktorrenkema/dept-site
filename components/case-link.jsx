@@ -22,7 +22,7 @@ const CaseLinkContainer = styled(motion.a)`
   align-items: center;
   justify-content: flex-start;
   width: fit-content;
-
+  cursor: pointer;
   @media (max-width: 576px) {
     /* Phone devices and **below** */
     display: none;
@@ -46,14 +46,12 @@ export default function CaseLink(props) {
     <CaseLinkContainer
       href={url}
       target="_blank"
-      onHoverStart={() => {
+      onHoverStart={React.useCallback(() => {
         setHoverLink(true);
-        console.log(hoverLink);
-      }}
-      onHoverEnd={() => {
+      }, [])}
+      onHoverEnd={React.useCallback(() => {
         setHoverLink(false);
-        console.log(hoverLink);
-      }}
+      }, [])}
     >
       <LinkArrow hoverLink={hoverLink}></LinkArrow>
       <Text animate={{ textDecoration: hoverLink ? "underline" : "none" }}>

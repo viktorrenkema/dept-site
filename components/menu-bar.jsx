@@ -109,9 +109,9 @@ export default function MenuBar(props) {
         </DeptSVG>
       </Link>
       <MenuButtonContainer
-        onTap={() => {
+        onTap={React.useCallback(() => {
           setShowMenu(!showMenu);
-        }}
+        }, [showMenu])}
       >
         <H4>Menu</H4>
         <MenuToggle showMenu={showMenu} />
