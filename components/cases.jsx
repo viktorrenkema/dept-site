@@ -97,7 +97,7 @@ export default function Cases(props) {
       {filteredCases.map((item, index) => {
         return (
           <Case
-            key={index}
+            key={item.label}
             label={item.label}
             image={item.image}
             alt={item.alt}

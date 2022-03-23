@@ -324,7 +324,7 @@ export default function Menu(props) {
         </CountryPickerOption>
         {countries.map((country, index) => (
           <CountryPickerOption
-            key={index}
+            key={country}
             variants={focusCountries}
             animate={
               toggleSelector
@@ -357,7 +357,7 @@ export default function Menu(props) {
         {/* Render a list of navigation links in the menu */}
         {navigation.map((i, index) => (
           <MenuItemContainer
-            key={index}
+            key={i}
             onTap={React.useCallback(() => {
               setNavSelection(index);
             }, [])}

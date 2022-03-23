@@ -165,7 +165,7 @@ export default function Footer() {
             {footer.map((item, index) => {
               return (
                 <FooterLink
-                  key={index}
+                  key={item.name}
                   href={item.link}
                   target="_blank"
                   whileHover={{ opacity: 0.7, textDecoration: "underline" }}
