@@ -48,8 +48,17 @@ export default function Header(props) {
   // Turn the above transformed values into a motion template literal
   const border = useMotionTemplate`${scrollYToMarginRL}px`;
 
-  // useEffect to store the viewport’s width
+  // Create a new motion value to store the window width
   const windowWidth = useMotionValue(0);
+
+  const newBorder = useTransform(windowWidth, () => {
+    return windowWidth < 576 ? 0 : border.current;
+  });
+
+  // See if newBorder is changing on scroll (it aint)
+  newBorder.onChange(() => {
+    console.log(newBorder.current);
+  });
 
   // *todo*
   // [] Add debouncing
@@ -68,7 +77,10 @@ export default function Header(props) {
   }, [windowWidth]);
 
   return (
-    <SectionHeader style={{ borderWidth: windowWidth < 576 ? "0px" : border }}>
+    <SectionHeader
+      style={{ borderWidth: newBorder }}
+      // style={{ borderWidth: windowWidth < 576 ? "0px" : border }}
+    >
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
