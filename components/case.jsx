@@ -29,7 +29,7 @@ const caseCard = {
 };
 
 // 💅🏽 Styled Components
-const CaseCont = styled(motion.div)`
+const CaseContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -70,7 +70,7 @@ export default function Case(props) {
   });
 
   return (
-    <CaseCont
+    <CaseContainer
       variants={caseCard}
       animate={isClampedInViewport ? "show" : "hidden"}
       ref={targetRef}
@@ -86,6 +86,6 @@ export default function Case(props) {
       <Label>{label}</Label>
       <H3>{title}</H3>
       <CaseLink url={url}></CaseLink>
-    </CaseCont>
+    </CaseContainer>
   );
 }

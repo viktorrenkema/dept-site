@@ -9,7 +9,7 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-const ButtonCont = styled(motion.div)`
+const ButtonContainer = styled(motion.div)`
   background-color: ${palette.black100};
   width: ${(props) => (props.width ? props.width : "170px")};
   height: 50px;
@@ -47,13 +47,13 @@ export default function Button(props) {
   const { width, buttonText, to } = props;
   return (
     <Link href={to} target="_blank">
-      <ButtonCont
+      <ButtonContainer
         width={width}
         whileHover={{ backgroundColor: palette.accent500 }}
       >
         {" "}
         <ButtonText>{buttonText}</ButtonText>
-      </ButtonCont>
+      </ButtonContainer>
     </Link>
   );
 }

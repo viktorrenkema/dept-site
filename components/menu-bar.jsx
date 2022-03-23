@@ -15,7 +15,7 @@ import Link from "next/link";
 import { palette } from "../resources/palette";
 
 // 💅🏽 Styled Components
-const MenuCont = styled(motion.nav)`
+const MenuContainer = styled(motion.nav)`
   height: 53px;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ const MenuCont = styled(motion.nav)`
   }
 `;
 
-const MenuButtonCont = styled(motion.div)`
+const MenuButtonContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +89,7 @@ export default function MenuBar(props) {
   const top = useMotionTemplate`${scrollYToTop}rem`;
 
   return (
-    <MenuCont
+    <MenuContainer
       showMenu={showMenu}
       style={{
         margin: viewportWidth < 576 ? "0rem 0rem" : margin,
@@ -108,15 +108,15 @@ export default function MenuBar(props) {
           ></motion.path>
         </DeptSVG>
       </Link>
-      <MenuButtonCont
+      <MenuButtonContainer
         onTap={() => {
           setShowMenu(!showMenu);
         }}
       >
         <H4>Menu</H4>
         <MenuToggle showMenu={showMenu} />
-      </MenuButtonCont>
-    </MenuCont>
+      </MenuButtonContainer>
+    </MenuContainer>
   );
 }
 
