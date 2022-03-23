@@ -5,6 +5,7 @@ import {
   useViewportScroll,
   useTransform,
   useMotionTemplate,
+  useMotionValue,
 } from "framer-motion";
 import styled from "styled-components";
 
@@ -40,7 +41,6 @@ const H1 = styled(motion.h1)`
 
 export default function Header(props) {
   let { scrollYProgress } = useViewportScroll(); // Track the y scroll in % from 0 to 1
-  const [viewportWidth, setViewportWidth] = React.useState(0);
 
   // To show the border slowly increase to 10px on scroll, we take the scrollYProgress value and transform it into values that make sense for the border
   const scrollYToMarginRL = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
@@ -48,15 +48,27 @@ export default function Header(props) {
   // Turn the above transformed values into a motion template literal
   const border = useMotionTemplate`${scrollYToMarginRL}px`;
 
-  // useEffect to get the viewport’s width
+  // useEffect to store the viewport’s width
+  const windowWidth = useMotionValue(0);
+
+  // *todo*
+  // [] Add debouncing
+  // [] Not fully functional yet
   React.useEffect(() => {
-    setViewportWidth(window.innerWidth);
-  }, []);
+    windowWidth.set(window.innerWidth);
+
+    const resize = () => {
+      windowWidth.set(window.innerWidth);
+    };
+
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [windowWidth]);
 
   return (
-    <SectionHeader
-      style={{ borderWidth: viewportWidth < 576 ? "0px" : border }}
-    >
+    <SectionHeader style={{ borderWidth: windowWidth < 576 ? "0px" : border }}>
       <Image
         src={headerImg}
         alt="Header image of a person looking at a whiteboard"
