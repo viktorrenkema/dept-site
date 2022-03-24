@@ -223,48 +223,46 @@ export default function Menu(props) {
   const { showMenu, setShowMenu } = props;
   // Keep state on whether we currently are in the left-side countries selector or the right-side nav selector
   const [toggleSelector, setToggleSelector] = React.useState(true);
-  //
-  const [navSelection, setNavSelection] = React.useState(0);
-  const [countriesSelection, setCountriesSelection] = React.useState(0);
+  const [sitelinkSelection, setSitelinkSelection] = React.useState(0);
+  const [countrySelection, setCountrySelection] = React.useState(0);
 
-  // Only do something when the component mounts
+  // On mount, run event listeners with logic
   React.useEffect(() => {
-    let current = navSelection;
-    let currentCountries = countriesSelection;
+    let currentSitelink = sitelinkSelection;
+    let currentCountry = countrySelection;
     // Assign the listener to a variable
     const listener = (event) => {
       // Listeners to navigate left & right between Countries and Nav
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
-        //
         setToggleSelector(!toggleSelector);
       }
 
       // Listeners to go up and down
-      //    Arrow Down
+      // Arrow Down
       if (event.key === "ArrowDown") {
         // Prevent the window from scrolling from pressing arrow keys
         event.preventDefault();
 
-        // toggleSelector true means we're in larger nav
+        // Set selection for **larger nav** (toggleSelector is true)
         if (toggleSelector) {
-          if (current === navigation.length - 1) {
-            current = 0;
-            setNavSelection(current);
+          if (currentSitelink === navigation.length - 1) {
+            currentSitelink = 0;
+            setSitelinkSelection(currentSitelink);
           } else {
-            current++;
-            setNavSelection(current);
+            currentSitelink++;
+            setSitelinkSelection(currentSitelink);
           }
         }
 
-        // toggleSelector false means we're in countries nav
+        // Set selection for **countries** nav (toggleSelector is false)
         if (!toggleSelector) {
-          if (currentCountries === countries.length - 1) {
-            currentCountries = 0;
-            setCountriesSelection(currentCountries);
+          if (currentCountry === countries.length - 1) {
+            currentCountry = 0;
+            setCountrySelection(currentCountry);
           } else {
-            currentCountries++;
-            setCountriesSelection(currentCountries);
+            currentCountry++;
+            setCountrySelection(currentCountry);
           }
         }
       }
@@ -274,24 +272,25 @@ export default function Menu(props) {
         // Prevent the window from scrolling from pressing arrow keys
         event.preventDefault();
 
-        // toggleSelector===true means we're in larger nav
+        // Set selection for **larger nav** (toggleSelector is true)
         if (toggleSelector) {
-          if (current === 0) {
-            current = navigation.length - 1;
-            setNavSelection(current);
+          if (currentSitelink === 0) {
+            currentSitelink = navigation.length - 1;
+            setSitelinkSelection(currentSitelink);
           } else {
-            current--;
-            setNavSelection(current);
+            currentSitelink--;
+            setSitelinkSelection(currentSitelink);
           }
         }
-        // toggleSelector===false means we're in **countries** nav
+
+        // Set selection for **countries** nav (toggleSelector is false)
         if (!toggleSelector) {
-          if (currentCountries === 0) {
-            currentCountries = countries.length - 1;
-            setCountriesSelection(currentCountries);
+          if (currentCountry === 0) {
+            currentCountry = countries.length - 1;
+            setCountrySelection(currentCountry);
           } else {
-            currentCountries--;
-            setCountriesSelection(currentCountries);
+            currentCountry--;
+            setCountrySelection(currentCountry);
           }
         }
       }
@@ -304,7 +303,7 @@ export default function Menu(props) {
       // Remove the event listener when the component is unmounted
       document.removeEventListener("keydown", listener);
     };
-  }, [toggleSelector, navSelection, countriesSelection]);
+  }, [toggleSelector, sitelinkSelection, countrySelection]);
 
   return (
     <MenuOverlay
@@ -325,12 +324,12 @@ export default function Menu(props) {
             animate={
               toggleSelector
                 ? "dim"
-                : countriesSelection === index
+                : countrySelection === index
                 ? "active"
                 : "inactive"
             }
           >
-            {countriesSelection === index && (
+            {countrySelection === index && (
               <ArrowSelection
                 style={{ transform: "scale(0.5)" }}
               ></ArrowSelection>
@@ -355,15 +354,17 @@ export default function Menu(props) {
           <MenuItemContainer
             key={i}
             onTap={() => {
-              setNavSelection(index);
+              setSitelinkSelection(index);
             }}
           >
             <MenuH2Wrapper variants={stagger}>
               <MenuH2
                 variants={focus}
-                animate={navSelection === index ? "active" : "inactive"}
+                animate={sitelinkSelection === index ? "active" : "inactive"}
               >
-                {navSelection === index && <ArrowSelection></ArrowSelection>}
+                {sitelinkSelection === index && (
+                  <ArrowSelection></ArrowSelection>
+                )}
                 {i}
               </MenuH2>
             </MenuH2Wrapper>

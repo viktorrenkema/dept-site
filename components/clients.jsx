@@ -136,7 +136,7 @@ export default function Clients() {
           return (
             <Client
               key={clt.name}
-              // A priority prop is passed to determine which logo's to still show on smaller breakpoints
+              // A priority prop is passed to determine which logos to still show on smaller breakpoints
               priority={clt.priority.toString()}
               variants={client}
             >
